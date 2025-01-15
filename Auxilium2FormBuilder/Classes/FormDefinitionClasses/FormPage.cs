@@ -13,7 +13,7 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
         public required string Title { get; set; }
         public required string? Description { get; set; }
         public required string? If { get; set; }
-        public required FormPageComponent[] Components { get; set; }
+        public required List<FormPageComponent> Components { get; set; }
 
 
         public static FormPage FromJSON(JsonNode jsonNode)
@@ -27,7 +27,7 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
             string ifStatement = jsonNode["if"]?.GetValue<string>() ?? null;
 
             var componentsNode = jsonNode["components"] as JsonArray ?? throw new InvalidOperationException("Missing or invalid 'components' in JSON.");
-            FormPageComponent[] components = componentsNode.Select(componentNode => FormPageComponent.FromJSON(componentNode)).ToArray();
+            List<FormPageComponent> components = componentsNode.Select(componentNode => FormPageComponent.FromJSON(componentNode)).ToList();
 
             FormPage builder = new()
             {

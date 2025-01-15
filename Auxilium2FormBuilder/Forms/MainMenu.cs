@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Auxilium2FormBuilder.Forms
 {
@@ -31,20 +32,25 @@ namespace Auxilium2FormBuilder.Forms
             this.listView1.Columns.Add("On Submit Steps", 130);
 
             string[] files = Directory.GetFiles(path: this.FormDefinitionDirectory, searchPattern: "*.json", searchOption: SearchOption.AllDirectories);
+            int counter = 0;
             foreach (string file in files)
             {
                 string fileContents = File.ReadAllText(file);
                 var jsonContents = JsonObject.Parse(fileContents);
 
-                FormDefinition formDefinition = FormDefinition.FromJSON(jsonNode: jsonContents);
+                Guid guid = Guid.Parse(file.Replace(oldValue: this.FormDefinitionDirectory + "\\", newValue: "").Replace(oldValue: ".json", newValue: ""));
 
-                ListViewItem item = new(file.Replace(oldValue: this.FormDefinitionDirectory + "\\", newValue: "").Replace(oldValue: ".json", newValue: ""));
+                FormDefinition formDefinition = FormDefinition.FromJSON(guid: guid, jsonNode: jsonContents);
+
+                ListViewItem item = new(guid.ToString());
                 item.SubItems.Add(formDefinition.TextPrefabPath);
                 item.SubItems.Add(formDefinition.Pages.Count().ToString());
 
-                item.Tag = formDefinition;
+                item.Tag = counter;
 
                 this.listView1.Items.Add(item);
+                Program.FormDefinitions.Add(formDefinition);
+                counter++;
             }
             this.listView1.Update();
         }
@@ -68,7 +74,7 @@ namespace Auxilium2FormBuilder.Forms
         {
             if (this.listView1.SelectedItems.Count == 1)
             {
-                new FormDefinitionBuilder(formDef: (FormDefinition)this.listView1.SelectedItems[0].Tag).ShowDialog();
+                new FormDefinitionBuilder(index: System.Convert.ToInt32(listView1.SelectedItems[0].Tag)).ShowDialog();
             }
         }
 

@@ -33,11 +33,14 @@
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
             checkBox1 = new CheckBox();
+            groupBox5 = new GroupBox();
+            textBox_fileUUID = new TextBox();
             groupBox4 = new GroupBox();
             listView_pages = new ListView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
+            groupBox5.SuspendLayout();
             groupBox4.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,7 +48,7 @@
             // 
             groupBox1.Controls.Add(textBox1);
             groupBox1.Dock = DockStyle.Top;
-            groupBox1.Location = new Point(3, 23);
+            groupBox1.Location = new Point(3, 75);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(394, 52);
             groupBox1.TabIndex = 0;
@@ -64,19 +67,20 @@
             // 
             groupBox2.Controls.Add(groupBox3);
             groupBox2.Controls.Add(groupBox1);
+            groupBox2.Controls.Add(groupBox5);
             groupBox2.Dock = DockStyle.Left;
             groupBox2.Location = new Point(0, 0);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(400, 562);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Text Prefab Path";
+            groupBox2.Text = "Options";
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(checkBox1);
             groupBox3.Dock = DockStyle.Top;
-            groupBox3.Location = new Point(3, 75);
+            groupBox3.Location = new Point(3, 127);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(394, 52);
             groupBox3.TabIndex = 1;
@@ -92,6 +96,26 @@
             checkBox1.Size = new Size(388, 17);
             checkBox1.TabIndex = 3;
             checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(textBox_fileUUID);
+            groupBox5.Dock = DockStyle.Top;
+            groupBox5.Location = new Point(3, 23);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(394, 52);
+            groupBox5.TabIndex = 2;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "ID";
+            // 
+            // textBox_fileUUID
+            // 
+            textBox_fileUUID.Dock = DockStyle.Fill;
+            textBox_fileUUID.Location = new Point(3, 23);
+            textBox_fileUUID.Name = "textBox_fileUUID";
+            textBox_fileUUID.ReadOnly = true;
+            textBox_fileUUID.Size = new Size(388, 27);
+            textBox_fileUUID.TabIndex = 2;
             // 
             // groupBox4
             // 
@@ -134,6 +158,8 @@
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
             groupBox4.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -147,5 +173,7 @@
         private CheckBox checkBox1;
         private GroupBox groupBox4;
         private ListView listView_pages;
+        private GroupBox groupBox5;
+        private TextBox textBox_fileUUID;
     }
 }

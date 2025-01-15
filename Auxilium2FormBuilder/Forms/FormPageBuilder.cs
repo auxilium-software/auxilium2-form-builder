@@ -13,20 +13,22 @@ namespace Auxilium2FormBuilder.Forms
 {
     public partial class FormPageBuilder : Form
     {
-        private FormPage formPageDefinition;
-        public FormPageBuilder(FormPage formPageDef)
+        private int FormDefIndex;
+        private int FormPageDefIndex;
+        public FormPageBuilder(int formDefIndex, int formPageDefIndex)
         {
             InitializeComponent();
-            this.formPageDefinition = formPageDef;
+            this.FormDefIndex = formDefIndex;
+            this.FormPageDefIndex = formPageDefIndex;
             this.overwriteFieldsWithFileData();
         }
 
         public void overwriteFieldsWithFileData()
         {
-            this.textBox_pageID.Text = this.formPageDefinition.ID;
-            this.textBox_title.Text = this.formPageDefinition.Title;
-            this.textBox_description.Text = this.formPageDefinition.Description;
-            this.textBox_ifStatement.Text = this.formPageDefinition.If;
+            this.textBox_pageID.Text = Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].ID;
+            this.textBox_title.Text = Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Title;
+            this.textBox_description.Text = Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Description;
+            this.textBox_ifStatement.Text = Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].If;
 
             this.listView_pageComponents.Clear();
             this.listView_pageComponents.Columns.Add("Type", 150);
@@ -35,21 +37,60 @@ namespace Auxilium2FormBuilder.Forms
             this.listView_pageComponents.Columns.Add("Default Value", 150);
             this.listView_pageComponents.Columns.Add("Required", 150);
 
-            foreach (var pageDef in this.formPageDefinition.Components)
+            int counter = 0;
+            foreach (var pageDef in Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Components)
             {
                 var item = new ListViewItem(pageDef.Type);
                 item.SubItems.Add(pageDef.Label);
                 item.SubItems.Add(pageDef.OutputVariable);
                 item.SubItems.Add(pageDef.DefaultValue);
                 item.SubItems.Add(pageDef.Required.ToString());
-                item.Tag = pageDef;
+                item.Tag = counter;
                 this.listView_pageComponents.Items.Add(item);
+                counter++;
             }
         }
 
         private void FormPageBuilder_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripButton_pageComponents_newComponent_Click(object sender, EventArgs e)
+        {
+            new NewFormPageComponentTypeSelector(formDefIndex: this.FormDefIndex, formPageDefIndex: this.FormPageDefIndex).ShowDialog();
+            overwriteFieldsWithFileData();
+            new FormPageComponentBuilder(formDefIndex: this.FormDefIndex, formPageDefIndex: this.FormPageDefIndex, formPageComponentDefIndex: this.listView_pageComponents.Items.Count - 1).ShowDialog();
+        }
+
+        private void toolStripButton_pageComponents_editSelectedComponent_Click(object sender, EventArgs e)
+        {
+            new FormPageComponentBuilder(
+                formDefIndex: this.FormDefIndex,
+                formPageDefIndex: this.FormPageDefIndex,
+                formPageComponentDefIndex: System.Convert.ToInt32(this.listView_pageComponents.SelectedItems[0].Tag)
+                ).ShowDialog();
+            overwriteFieldsWithFileData();
+        }
+
+        private void toolStripButton_pageComponents_deleteSelectedComponent_Click(object sender, EventArgs e)
+        {
+            Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Components.RemoveAt(System.Convert.ToInt32(this.listView_pageComponents.Tag));
+            overwriteFieldsWithFileData();
+        }
+
+        private void listView_pageComponents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listView_pageComponents.SelectedItems.Count == 1)
+            {
+                this.toolStripButton_pageComponents_editSelectedComponent.Enabled = true;
+                this.toolStripButton_pageComponents_deleteSelectedComponent.Enabled = true;
+            }
+            else
+            {
+                this.toolStripButton_pageComponents_editSelectedComponent.Enabled = false;
+                this.toolStripButton_pageComponents_deleteSelectedComponent.Enabled = false;
+            }
         }
     }
 }

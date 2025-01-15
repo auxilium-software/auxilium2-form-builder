@@ -9,13 +9,14 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
 {
     public class FormDefinition
     {
+        public required Guid ID { get; set; }
         public required string TextPrefabPath { get; set; }
         public required FormPage[] Pages { get; set; }
         public required bool FinalReview { get; set; }
         public required FinalReview? Review { get; set; }
         public required OnSubmitOperation[] OnSubmitOperations { get; set; }
 
-        public static FormDefinition FromJSON(JsonNode jsonNode)
+        public static FormDefinition FromJSON(Guid guid, JsonNode jsonNode)
         {
             string textPrefabPath = jsonNode["text_prefab_path"]?.GetValue<string>() ?? throw new InvalidOperationException("Missing 'text_prefab_path' in JSON.");
 
@@ -31,6 +32,7 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
 
             FormDefinition builder = new()
             {
+                ID = guid,
                 TextPrefabPath = textPrefabPath,
                 Pages = pages,
                 FinalReview = finalReview,
