@@ -66,10 +66,15 @@ namespace Auxilium2FormBuilder.Forms
 
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
-            if(this.listView1.SelectedItems.Count == 1)
+            if (this.listView1.SelectedItems.Count == 1)
             {
-                new FormDefinitionBuilder((FormDefinition)this.listView1.SelectedItems[0].Tag).ShowDialog();
+                new FormDefinitionBuilder(formDef: (FormDefinition)this.listView1.SelectedItems[0].Tag).ShowDialog();
             }
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

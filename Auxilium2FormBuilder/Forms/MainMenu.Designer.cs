@@ -51,7 +51,7 @@
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
-            listView1.DoubleClick += this.listView1_DoubleClick;
+            listView1.DoubleClick += listView1_DoubleClick;
             // 
             // toolStrip_main
             // 
@@ -111,7 +111,9 @@
             Controls.Add(listView1);
             Controls.Add(toolStrip_main);
             Name = "MainMenu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "MainMenu";
+            Load += MainMenu_Load;
             toolStrip_main.ResumeLayout(false);
             toolStrip_main.PerformLayout();
             ResumeLayout(false);

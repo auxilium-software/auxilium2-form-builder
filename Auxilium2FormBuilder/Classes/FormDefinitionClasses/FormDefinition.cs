@@ -17,10 +17,16 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
 
         public static FormDefinition FromJSON(JsonNode jsonNode)
         {
-            string textPrefabPath = jsonNode["text_prefab_path"]?.GetValue<string>();
-            FormPage[] pages = [];
-            bool finalReview = jsonNode["final_review"]?.GetValue<bool>();
+            string textPrefabPath = jsonNode["text_prefab_path"]?.GetValue<string>() ?? throw new InvalidOperationException("Missing 'text_prefab_path' in JSON.");
+
+            var pagesNode = jsonNode["pages"] as JsonArray ?? throw new InvalidOperationException("Missing or invalid 'pages' in JSON.");
+            FormPage[] pages = pagesNode.Select(pageNode => FormPage.FromJSON(pageNode)).ToArray();
+
+
+            bool finalReview = jsonNode["final_review"]?.GetValue<bool>() ?? throw new InvalidOperationException("Missing 'final_review' in JSON.");
+
             FinalReview? review = null;
+
             OnSubmitOperation[] onSubmitOperations = [];
 
             FormDefinition builder = new()
