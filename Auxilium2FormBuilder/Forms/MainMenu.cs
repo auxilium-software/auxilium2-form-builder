@@ -15,7 +15,6 @@ namespace Auxilium2FormBuilder.Forms
 {
     public partial class MainMenu : Form
     {
-        internal string? FormDefinitionDirectory { get; set; } = null;
         public MainMenu()
         {
             InitializeComponent();
@@ -31,14 +30,14 @@ namespace Auxilium2FormBuilder.Forms
             this.listView1.Columns.Add("Review Steps", 130);
             this.listView1.Columns.Add("On Submit Steps", 130);
 
-            string[] files = Directory.GetFiles(path: this.FormDefinitionDirectory, searchPattern: "*.json", searchOption: SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(path: Program.FormDefinitionDirectory, searchPattern: "*.json", searchOption: SearchOption.AllDirectories);
             int counter = 0;
             foreach (string file in files)
             {
                 string fileContents = File.ReadAllText(file);
                 var jsonContents = JsonObject.Parse(fileContents);
 
-                Guid guid = Guid.Parse(file.Replace(oldValue: this.FormDefinitionDirectory + "\\", newValue: "").Replace(oldValue: ".json", newValue: ""));
+                Guid guid = Guid.Parse(file.Replace(oldValue: Program.FormDefinitionDirectory + "\\", newValue: "").Replace(oldValue: ".json", newValue: ""));
 
                 FormDefinition formDefinition = FormDefinition.FromJSON(guid: guid, jsonNode: jsonContents);
 
@@ -63,8 +62,8 @@ namespace Auxilium2FormBuilder.Forms
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                this.FormDefinitionDirectory = dialog.SelectedPath;
-                this.Text = "Form Builder operating on " + this.FormDefinitionDirectory;
+                Program.FormDefinitionDirectory = dialog.SelectedPath;
+                this.Text = "Form Builder operating on " + Program.FormDefinitionDirectory;
                 this.toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition.Enabled = true;
                 this.UpdateFormDefinitionListView();
             }
@@ -80,7 +79,7 @@ namespace Auxilium2FormBuilder.Forms
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-
+            new FormDefinitionBuilder(index: 0).ShowDialog();
         }
     }
 }

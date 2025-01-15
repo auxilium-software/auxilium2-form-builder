@@ -1,11 +1,22 @@
 using Auxilium2FormBuilder.Classes.FormDefinitionClasses;
 using Auxilium2FormBuilder.Forms;
+using System.Text.Json.Nodes;
 
 namespace Auxilium2FormBuilder
 {
     internal static class Program
     {
+        public static string FormDefinitionDirectory;
         public static List<FormDefinition> FormDefinitions = new();
+
+        public static void UpdateFormDefFiles()
+        {
+            foreach(FormDefinition formDef in Program.FormDefinitions)
+            {
+                formDef.SaveToFile();
+            }
+        }
+
 
 
         /// <summary>

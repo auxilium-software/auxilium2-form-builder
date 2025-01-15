@@ -45,5 +45,17 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
 
             return builder;
         }
+
+        public JsonObject ToJSON()
+        {
+            var jsonObject = new JsonObject
+            {
+                ["type"] = this.Type
+            };
+            if (this.Label != null) jsonObject["label"] = this.Label;
+            jsonObject["output_variable"] = this.OutputVariable;
+            jsonObject["required"] = this.Required;
+            return jsonObject;
+        }
     }
 }

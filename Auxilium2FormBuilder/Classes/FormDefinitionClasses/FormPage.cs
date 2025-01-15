@@ -42,5 +42,17 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
 
             return builder;
         }
+
+        public JsonObject ToJSON()
+        {
+            var jsonObject = new JsonObject
+            {
+                ["title"] = this.Title,
+            };
+            if (this.ID != null) jsonObject["id"] = this.ID;
+            if (this.If != null) jsonObject["if"] = this.If;
+            jsonObject["components"] = new JsonArray(this.Components.Select(component => component.ToJSON()).ToArray());
+            return jsonObject;
+        }
     }
 }

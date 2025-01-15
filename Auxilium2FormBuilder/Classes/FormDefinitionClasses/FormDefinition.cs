@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
@@ -41,6 +42,37 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
             };
 
             return builder;
+        }
+
+        public JsonObject ToJSON()
+        {
+            var jsonObject = new JsonObject
+            {
+                ["text_prefab_path"] = TextPrefabPath,
+                ["pages"] = new JsonArray(Pages.Select(page => page.ToJSON()).ToArray()),
+                ["final_review"] = FinalReview
+            };
+
+            return jsonObject;
+        }
+
+        public void SaveToFile()
+        {
+            if (string.IsNullOrEmpty(Program.FormDefinitionDirectory))
+                throw new ArgumentException("Directory path cannot be null or empty.", nameof(Program.FormDefinitionDirectory));
+
+            string filePath = Path.Combine(Program.FormDefinitionDirectory, $"{ID}.json");
+
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+            };
+
+            string jsonString = ToJSON().ToJsonString(options);
+
+            jsonString = jsonString.Replace("  ", "    ");
+
+            File.WriteAllText(filePath, jsonString);
         }
     }
 }
