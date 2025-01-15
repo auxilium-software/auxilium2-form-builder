@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
-namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
+namespace Auxilium2FormBuilder.FormDefinitionClasses
 {
     public class FormComponentChoiceFieldOption
     {
@@ -24,7 +24,7 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
             FormComponentChoiceFieldOption builder = new()
             {
                 LabelStrong = labelStrong,
-                LabelSecondary= labelSecondary,
+                LabelSecondary = labelSecondary,
                 Value = value
             };
 
@@ -34,11 +34,11 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
         {
             var jsonObject = new JsonObject
             {
-                ["label_strong"] = this.LabelStrong,
+                ["label_strong"] = LabelStrong,
             };
 
-            if (this.LabelSecondary != null) jsonObject["label_secondary"] = this.LabelSecondary;
-            if (this.Value!= null) jsonObject["value"] = this.Value;
+            if (LabelSecondary != null) jsonObject["label_secondary"] = LabelSecondary;
+            if (Value != null) jsonObject["value"] = Value;
             return jsonObject;
         }
     }

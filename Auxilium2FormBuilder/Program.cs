@@ -1,4 +1,4 @@
-using Auxilium2FormBuilder.Classes.FormDefinitionClasses;
+using Auxilium2FormBuilder.FormDefinitionClasses;
 using Auxilium2FormBuilder.Forms;
 using System.Text.Json.Nodes;
 

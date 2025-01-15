@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
-namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
+namespace Auxilium2FormBuilder.FormDefinitionClasses
 {
     public class FinalReviewComponent
     {
@@ -48,16 +48,16 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
         {
             var jsonObject = new JsonObject
             {
-                ["type"] = this.Type
+                ["type"] = Type
             };
 
-            if (this.Value != null) jsonObject["value"] = this.Value;
-            if (this.JumpToPage != null) jsonObject["jump_to_page"] = this.JumpToPage;
-            if (this.IfStatement != null) jsonObject["if"] = this.IfStatement;
-            if (this.Dictionary != null)
+            if (Value != null) jsonObject["value"] = Value;
+            if (JumpToPage != null) jsonObject["jump_to_page"] = JumpToPage;
+            if (IfStatement != null) jsonObject["if"] = IfStatement;
+            if (Dictionary != null)
             {
                 var dictionaryNode = new JsonObject();
-                foreach (var (key, value) in this.Dictionary)
+                foreach (var (key, value) in Dictionary)
                 {
                     dictionaryNode[key] = value;
                 }

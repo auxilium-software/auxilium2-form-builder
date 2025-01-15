@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
-namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
+namespace Auxilium2FormBuilder.FormDefinitionClasses
 {
     public class FinalReview
     {

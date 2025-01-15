@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
-namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
+namespace Auxilium2FormBuilder.FormDefinitionClasses
 {
     public class OnSubmitStep
     {
@@ -15,7 +15,7 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
         public required string? Evaluation { get; set; }
         public required string? Schema { get; set; }
         public required string? Content { get; set; }
-        public required string? MIMEType{ get; set; }
+        public required string? MIMEType { get; set; }
         public required string? Name { get; set; }
         public required string? Property { get; set; }
         public required string? Target { get; set; }
@@ -66,21 +66,22 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
         {
             var jsonObject = new JsonObject
             {
-                ["type"] = this.Type
+                ["type"] = Type
             };
 
-            if (this.IfStatement != null) jsonObject["if"] = this.IfStatement;
+            if (IfStatement != null) jsonObject["if"] = IfStatement;
+            // if (this.Struct != null) jsonObject["struct"] = this.Struct;
 
-            if (this.Evaluation != null) jsonObject["eval"] = this.Evaluation;
-            if (this.Content != null) jsonObject["content"] = this.Content;
-            if (this.MIMEType != null) jsonObject["mime_type"] = this.MIMEType;
-            if (this.Schema != null) jsonObject["schema"] = this.Schema;
-            if (this.OutputVariable != null) jsonObject["output_variable"] = this.OutputVariable;
-            if (this.Name != null) jsonObject["name"] = this.Name;
-            if (this.Target != null) jsonObject["target"] = this.Target;
-            if (this.Property != null) jsonObject["property"] = this.Property;
-            if (this.ReplaceLastReturnURL != null) jsonObject["replace_last_return_url"] = this.ReplaceLastReturnURL;
-            if (this.Value != null) jsonObject["value"] = this.Value;
+            if (Evaluation != null) jsonObject["eval"] = Evaluation;
+            if (Content != null) jsonObject["content"] = Content;
+            if (MIMEType != null) jsonObject["mime_type"] = MIMEType;
+            if (Schema != null) jsonObject["schema"] = Schema;
+            if (OutputVariable != null) jsonObject["output_variable"] = OutputVariable;
+            if (Name != null) jsonObject["name"] = Name;
+            if (Target != null) jsonObject["target"] = Target;
+            if (Property != null) jsonObject["property"] = Property;
+            if (ReplaceLastReturnURL != null) jsonObject["replace_last_return_url"] = ReplaceLastReturnURL;
+            if (Value != null) jsonObject["value"] = Value;
 
             return jsonObject;
         }
