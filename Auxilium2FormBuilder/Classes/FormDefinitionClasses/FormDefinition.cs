@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.JavaScript;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -14,7 +15,7 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
         public required Guid ID { get; set; }
         public required string TextPrefabPath { get; set; }
         public required FormPage[] Pages { get; set; }
-        public required bool FinalReview { get; set; }
+        public required bool ShouldFinalReview { get; set; }
         public required FinalReview? Review { get; set; }
         public required List<OnSubmitStep> OnSubmitOperations { get; set; }
 
@@ -28,7 +29,10 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
 
             bool finalReview = jsonNode["final_review"]?.GetValue<bool>() ?? throw new InvalidOperationException("Missing 'final_review' in JSON.");
 
+            var onReviewNode = jsonNode["review"] as JsonObject ?? null;
             FinalReview? review = null;
+            if (onReviewNode != null)
+                review = FinalReview.FromJSON(onReviewNode);
 
             var onSubmitNode = jsonNode["on_submit"] as JsonArray ?? throw new InvalidOperationException("Missing or invalid 'on_submit' in JSON.");
             List<OnSubmitStep> onSubmitOperations = onSubmitNode.Select(onSubmitNode => OnSubmitStep.FromJSON(onSubmitNode)).ToList();
@@ -38,7 +42,7 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
                 ID = guid,
                 TextPrefabPath = textPrefabPath,
                 Pages = pages,
-                FinalReview = finalReview,
+                ShouldFinalReview = finalReview,
                 Review = review,
                 OnSubmitOperations = onSubmitOperations
             };
@@ -52,8 +56,11 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
             {
                 ["text_prefab_path"] = TextPrefabPath,
                 ["pages"] = new JsonArray(Pages.Select(page => page.ToJSON()).ToArray()),
-                ["final_review"] = FinalReview
+                ["final_review"] = ShouldFinalReview
             };
+
+            if (this.Review != null)
+                jsonObject["review"] = Review.ToJSON();
 
             jsonObject["on_submit"] = new JsonArray(OnSubmitOperations.Select(op => op.ToJSON()).ToArray());
 

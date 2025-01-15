@@ -27,7 +27,7 @@ namespace Auxilium2FormBuilder.Forms
         {
             this.textBox_fileUUID.Text = Program.FormDefinitions[this.FormDefIndex].ID.ToString();
             this.textBox1.Text = Program.FormDefinitions[this.FormDefIndex].TextPrefabPath;
-            this.checkBox1.Checked = Program.FormDefinitions[this.FormDefIndex].FinalReview;
+            this.checkBox1.Checked = Program.FormDefinitions[this.FormDefIndex].ShouldFinalReview;
 
             this.listView_pages.Clear();
             this.listView_pages.Columns.Add("ID", 300);
