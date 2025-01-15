@@ -1,4 +1,4 @@
-﻿using Auxilium2FormBuilder.Classes.FormDefinitionClasses;
+﻿using Auxilium2FormBuilder.FormDefinitionClasses;
 using Auxilium2FormBuilder.Helpers;
 using System;
 using System.Collections.Generic;

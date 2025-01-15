@@ -15,6 +15,6 @@ namespace Auxilium2FormBuilder.Enumerators
         LARGE_TEXT_FIELD = 11,
 
         [StringValue("CHOICE_FIELD")]
-        RADIO_BUTTON = 20
+        CHOICE_FIELD = 20
     }
 }
