@@ -9,8 +9,7 @@ namespace Auxilium2FormBuilder.Helpers
 {
     public static class EnumExtensions
     {
-        public static string StringValue<T>(this T value)
-            where T : Enum
+        public static string StringValue<T>(this T value) where T : Enum
         {
             var fieldName = value.ToString();
             var field = typeof(T).GetField(fieldName, BindingFlags.Public | BindingFlags.Static);

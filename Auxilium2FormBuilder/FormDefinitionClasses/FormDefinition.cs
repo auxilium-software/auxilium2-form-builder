@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
-namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
+namespace Auxilium2FormBuilder.FormDefinitionClasses
 {
     public class FormDefinition
     {
@@ -59,7 +59,7 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
                 ["final_review"] = ShouldFinalReview
             };
 
-            if (this.Review != null)
+            if (Review != null)
                 jsonObject["review"] = Review.ToJSON();
 
             jsonObject["on_submit"] = new JsonArray(OnSubmitOperations.Select(op => op.ToJSON()).ToArray());

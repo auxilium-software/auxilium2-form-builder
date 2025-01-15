@@ -1,4 +1,5 @@
-﻿using Auxilium2FormBuilder.Helpers;
+﻿using Auxilium2FormBuilder.Enumerators;
+using Auxilium2FormBuilder.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
+namespace Auxilium2FormBuilder.FormDefinitionClasses
 {
     public class FormPageComponent
     {
@@ -67,16 +68,16 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
         {
             var jsonObject = new JsonObject
             {
-                ["type"] = this.Type.StringValue()
+                ["type"] = Type.StringValue()
             };
 
-            if (this.Rows != null) jsonObject["rows"] = this.Rows;
-            if (this.Options != null) jsonObject["options"] = new JsonArray(this.Options.Select(option => option.ToJSON()).ToArray());
+            if (Rows != null) jsonObject["rows"] = Rows;
+            if (Options != null) jsonObject["options"] = new JsonArray(Options.Select(option => option.ToJSON()).ToArray());
 
-            if (this.Label != null) jsonObject["label"] = this.Label;
-            if (this.DefaultValue != null) jsonObject["default_value"] = this.DefaultValue;
-            jsonObject["output_variable"] = this.OutputVariable;
-            jsonObject["required"] = this.Required;
+            if (Label != null) jsonObject["label"] = Label;
+            if (DefaultValue != null) jsonObject["default_value"] = DefaultValue;
+            jsonObject["output_variable"] = OutputVariable;
+            jsonObject["required"] = Required;
             return jsonObject;
         }
     }

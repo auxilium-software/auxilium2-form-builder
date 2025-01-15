@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
+namespace Auxilium2FormBuilder.Enumerators
 {
-    public enum FormPageComponentType : Int16
+    public enum FormPageComponentType : short
     {
         [StringValue("TEXT_FIELD")]
         TEXT_FIELD = 10,

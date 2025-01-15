@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
-namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
+namespace Auxilium2FormBuilder.FormDefinitionClasses
 {
     public class FormPage
     {
@@ -47,12 +47,12 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
         {
             var jsonObject = new JsonObject
             {
-                ["title"] = this.Title,
+                ["title"] = Title,
             };
-            if (this.ID != null) jsonObject["id"] = this.ID;
-            if (this.Description != null) jsonObject["description"] = this.Description;
-            if (this.If != null) jsonObject["if"] = this.If;
-            jsonObject["components"] = new JsonArray(this.Components.Select(component => component.ToJSON()).ToArray());
+            if (ID != null) jsonObject["id"] = ID;
+            if (Description != null) jsonObject["description"] = Description;
+            if (If != null) jsonObject["if"] = If;
+            jsonObject["components"] = new JsonArray(Components.Select(component => component.ToJSON()).ToArray());
             return jsonObject;
         }
     }
