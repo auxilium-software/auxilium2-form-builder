@@ -27,10 +27,10 @@ namespace Auxilium2FormBuilder.Forms
 
         private void button_create_Click(object sender, EventArgs e)
         {
-            string type;
-            if (radioButton_textField.Checked) type = "TEXT_FIELD";
-            else if (radioButton_largeTextField.Checked) type = "LARGE_TEXT_FIELD";
-            else if (radioButton_radioButtonField.Checked) type = "RADIO_BUTTON";
+            FormPageComponentType type;
+            if (radioButton_textField.Checked) type = FormPageComponentType.TEXT_FIELD;
+            else if (radioButton_largeTextField.Checked) type = FormPageComponentType.LARGE_TEXT_FIELD;
+            else if (radioButton_radioButtonField.Checked) type = FormPageComponentType.CHOICE_FIELD;
             else throw new Exception();
 
 

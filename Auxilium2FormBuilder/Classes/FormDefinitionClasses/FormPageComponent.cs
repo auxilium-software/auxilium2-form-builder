@@ -1,15 +1,17 @@
-﻿using System;
+﻿using Auxilium2FormBuilder.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
 {
     public class FormPageComponent
     {
-        public required string Type { get; set; }
+        public required FormPageComponentType Type { get; set; }
 
 
         public required int? Rows { get; set; }
@@ -23,7 +25,8 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
 
         public static FormPageComponent FromJSON(JsonNode jsonNode)
         {
-            string type = jsonNode["type"]?.GetValue<string>() ?? throw new InvalidOperationException("Missing 'type' in JSON.");
+            string typeTemp = jsonNode["type"]?.GetValue<string>() ?? throw new InvalidOperationException("Missing 'type' in JSON.");
+            FormPageComponentType type = Enum.Parse<FormPageComponentType>(typeTemp);
 
 
 
@@ -64,7 +67,7 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
         {
             var jsonObject = new JsonObject
             {
-                ["type"] = this.Type
+                ["type"] = this.Type.StringValue()
             };
 
             if (this.Rows != null) jsonObject["rows"] = this.Rows;

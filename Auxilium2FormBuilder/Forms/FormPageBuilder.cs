@@ -1,4 +1,5 @@
 ﻿using Auxilium2FormBuilder.Classes.FormDefinitionClasses;
+using Auxilium2FormBuilder.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,7 +41,7 @@ namespace Auxilium2FormBuilder.Forms
             int counter = 0;
             foreach (var pageDef in Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Components)
             {
-                var item = new ListViewItem(pageDef.Type);
+                var item = new ListViewItem(pageDef.Type.StringValue());
                 item.SubItems.Add(pageDef.Label);
                 item.SubItems.Add(pageDef.OutputVariable);
                 item.SubItems.Add(pageDef.DefaultValue);

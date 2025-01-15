@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Auxilium2FormBuilder.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,7 @@ namespace Auxilium2FormBuilder.Forms
 
         public void overwriteFieldsWithFileData()
         {
-            this.comboBox_type.Text = Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Components[this.FormPageComponentDefIndex].Type;
+            this.comboBox_type.Text = Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Components[this.FormPageComponentDefIndex].Type.StringValue();
             this.textBox_label.Text = Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Components[this.FormPageComponentDefIndex].Label;
             this.textBox_defaultValue.Text = Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Components[this.FormPageComponentDefIndex].DefaultValue;
             this.textBox_outputVariable.Text = Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Components[this.FormPageComponentDefIndex].OutputVariable;
