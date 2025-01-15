@@ -36,12 +36,17 @@
             groupBox5 = new GroupBox();
             textBox_fileUUID = new TextBox();
             groupBox4 = new GroupBox();
+            groupBox6 = new GroupBox();
             listView_pages = new ListView();
+            groupBox7 = new GroupBox();
+            listView_onSubmit = new ListView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox4.SuspendLayout();
+            groupBox6.SuspendLayout();
+            groupBox7.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -119,14 +124,26 @@
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(listView_pages);
+            groupBox4.Controls.Add(groupBox7);
+            groupBox4.Controls.Add(groupBox6);
             groupBox4.Dock = DockStyle.Fill;
             groupBox4.Location = new Point(400, 0);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(1171, 562);
             groupBox4.TabIndex = 3;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Pages";
+            groupBox4.Text = "Steps";
+            // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(listView_pages);
+            groupBox6.Dock = DockStyle.Top;
+            groupBox6.Location = new Point(3, 23);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(1165, 235);
+            groupBox6.TabIndex = 0;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Page Definitions";
             // 
             // listView_pages
             // 
@@ -135,11 +152,33 @@
             listView_pages.Location = new Point(3, 23);
             listView_pages.MultiSelect = false;
             listView_pages.Name = "listView_pages";
-            listView_pages.Size = new Size(1165, 536);
-            listView_pages.TabIndex = 3;
+            listView_pages.Size = new Size(1159, 209);
+            listView_pages.TabIndex = 4;
             listView_pages.UseCompatibleStateImageBehavior = false;
             listView_pages.View = View.Details;
-            listView_pages.DoubleClick += listView_pages_DoubleClick;
+            // 
+            // groupBox7
+            // 
+            groupBox7.Controls.Add(listView_onSubmit);
+            groupBox7.Dock = DockStyle.Top;
+            groupBox7.Location = new Point(3, 258);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new Size(1165, 235);
+            groupBox7.TabIndex = 1;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "On Submit...";
+            // 
+            // listView_onSubmit
+            // 
+            listView_onSubmit.Dock = DockStyle.Fill;
+            listView_onSubmit.FullRowSelect = true;
+            listView_onSubmit.Location = new Point(3, 23);
+            listView_onSubmit.MultiSelect = false;
+            listView_onSubmit.Name = "listView_onSubmit";
+            listView_onSubmit.Size = new Size(1159, 209);
+            listView_onSubmit.TabIndex = 4;
+            listView_onSubmit.UseCompatibleStateImageBehavior = false;
+            listView_onSubmit.View = View.Details;
             // 
             // FormDefinitionBuilder
             // 
@@ -161,6 +200,8 @@
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
             groupBox4.ResumeLayout(false);
+            groupBox6.ResumeLayout(false);
+            groupBox7.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -172,8 +213,11 @@
         private GroupBox groupBox3;
         private CheckBox checkBox1;
         private GroupBox groupBox4;
-        private ListView listView_pages;
         private GroupBox groupBox5;
         private TextBox textBox_fileUUID;
+        private GroupBox groupBox7;
+        private ListView listView_onSubmit;
+        private GroupBox groupBox6;
+        private ListView listView_pages;
     }
 }

@@ -10,7 +10,12 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
     public class FormPageComponent
     {
         public required string Type { get; set; }
+
+
+        public required int? Rows { get; set; }
         public required FormComponentChoiceFieldOption[]? Options { get; set; }
+
+
         public required string? Label { get; set; }
         public required string? DefaultValue { get; set; }
         public required string OutputVariable { get; set; }
@@ -20,10 +25,16 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
         {
             string type = jsonNode["type"]?.GetValue<string>() ?? throw new InvalidOperationException("Missing 'type' in JSON.");
 
+
+
+            int? rows = jsonNode["rows"]?.GetValue<int>() ?? null;
+
             var optionsNode = jsonNode["options"] as JsonArray ?? null;
             FormComponentChoiceFieldOption[]? options = null;
             if (optionsNode != null)
                 options = optionsNode.Select(pageNode => FormComponentChoiceFieldOption.FromJSON(pageNode)).ToArray();
+
+
 
             string label = jsonNode["label"]?.GetValue<string>() ?? null;
 
@@ -36,7 +47,10 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
             FormPageComponent builder = new()
             {
                 Type = type,
+
+                Rows = rows,
                 Options = options,
+
                 Label = label,
                 DefaultValue = defaultValue,
                 OutputVariable = outputVariable,
@@ -52,7 +66,12 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
             {
                 ["type"] = this.Type
             };
+
+            if (this.Rows != null) jsonObject["rows"] = this.Rows;
+            if (this.Options != null) jsonObject["options"] = new JsonArray(this.Options.Select(option => option.ToJSON()).ToArray());
+
             if (this.Label != null) jsonObject["label"] = this.Label;
+            if (this.DefaultValue != null) jsonObject["default_value"] = this.DefaultValue;
             jsonObject["output_variable"] = this.OutputVariable;
             jsonObject["required"] = this.Required;
             return jsonObject;

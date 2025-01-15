@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
         public required FormPage[] Pages { get; set; }
         public required bool FinalReview { get; set; }
         public required FinalReview? Review { get; set; }
-        public required OnSubmitOperation[] OnSubmitOperations { get; set; }
+        public required List<OnSubmitStep> OnSubmitOperations { get; set; }
 
         public static FormDefinition FromJSON(Guid guid, JsonNode jsonNode)
         {
@@ -29,7 +30,8 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
 
             FinalReview? review = null;
 
-            OnSubmitOperation[] onSubmitOperations = [];
+            var onSubmitNode = jsonNode["on_submit"] as JsonArray ?? throw new InvalidOperationException("Missing or invalid 'on_submit' in JSON.");
+            List<OnSubmitStep> onSubmitOperations = onSubmitNode.Select(onSubmitNode => OnSubmitStep.FromJSON(onSubmitNode)).ToList();
 
             FormDefinition builder = new()
             {
@@ -53,6 +55,8 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
                 ["final_review"] = FinalReview
             };
 
+            jsonObject["on_submit"] = new JsonArray(OnSubmitOperations.Select(op => op.ToJSON()).ToArray());
+
             return jsonObject;
         }
 
@@ -66,11 +70,13 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true,
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             };
 
             string jsonString = ToJSON().ToJsonString(options);
 
             jsonString = jsonString.Replace("  ", "    ");
+            jsonString = jsonString + "\n";
 
             File.WriteAllText(filePath, jsonString);
         }

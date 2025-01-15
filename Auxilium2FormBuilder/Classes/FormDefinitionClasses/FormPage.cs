@@ -50,6 +50,7 @@ namespace Auxilium2FormBuilder.Classes.FormDefinitionClasses
                 ["title"] = this.Title,
             };
             if (this.ID != null) jsonObject["id"] = this.ID;
+            if (this.Description != null) jsonObject["description"] = this.Description;
             if (this.If != null) jsonObject["if"] = this.If;
             jsonObject["components"] = new JsonArray(this.Components.Select(component => component.ToJSON()).ToArray());
             return jsonObject;

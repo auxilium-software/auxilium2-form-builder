@@ -37,7 +37,10 @@ namespace Auxilium2FormBuilder.Forms
             FormPageComponent newComponent = new()
             {
                 Type = type,
+
+                Rows = null,
                 Options = [],
+
                 Label = "",
                 DefaultValue = "",
                 OutputVariable = "",
