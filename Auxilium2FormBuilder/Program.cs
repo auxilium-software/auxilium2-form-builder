@@ -6,6 +6,8 @@ namespace Auxilium2FormBuilder
 {
     internal static class Program
     {
+        public static string SchemaURL = "https://schemas.darksparrow.uk/AuxiliumFormDefinition.json?version=4";
+
         public static string FormDefinitionDirectory;
         public static List<FormDefinition> FormDefinitions = new();
 

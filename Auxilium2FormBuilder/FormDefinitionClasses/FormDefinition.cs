@@ -54,6 +54,7 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
         {
             var jsonObject = new JsonObject
             {
+                ["schema"] = Program.SchemaURL,
                 ["text_prefab_path"] = TextPrefabPath,
                 ["pages"] = new JsonArray(Pages.Select(page => page.ToJSON()).ToArray()),
                 ["final_review"] = ShouldFinalReview
