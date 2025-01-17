@@ -63,5 +63,33 @@ namespace Auxilium2FormBuilder.Forms
         {
 
         }
+
+        private void listView_pages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.listView_pages.SelectedItems.Count == 1)
+            {
+                this.toolStripButton_pageDefinitions_editSelectedPage.Enabled = true;
+                this.toolStripButton_pageDefinitions_deleteSelectedPage.Enabled = true;
+            }
+            else
+            {
+                this.toolStripButton_pageDefinitions_editSelectedPage.Enabled = false;
+                this.toolStripButton_pageDefinitions_deleteSelectedPage.Enabled = false;
+            }
+        }
+
+        private void listView_onSubmit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.listView_onSubmit.SelectedItems.Count == 1)
+            {
+                this.toolStripButton_submitSteps_editSelectedStep.Enabled = true;
+                this.toolStripButton_submitSteps_deleteSelectedStep.Enabled = true;
+            }
+            else
+            {
+                this.toolStripButton_submitSteps_editSelectedStep.Enabled = false;
+                this.toolStripButton_submitSteps_deleteSelectedStep.Enabled = false;
+            }
+        }
     }
 }

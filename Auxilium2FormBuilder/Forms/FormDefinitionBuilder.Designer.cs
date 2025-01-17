@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDefinitionBuilder));
             groupBox1 = new GroupBox();
             textBox1 = new TextBox();
             groupBox2 = new GroupBox();
@@ -36,17 +37,27 @@
             groupBox5 = new GroupBox();
             textBox_fileUUID = new TextBox();
             groupBox4 = new GroupBox();
-            groupBox6 = new GroupBox();
-            listView_pages = new ListView();
             groupBox7 = new GroupBox();
             listView_onSubmit = new ListView();
+            toolStrip2 = new ToolStrip();
+            toolStripButton_submitSteps_newStep = new ToolStripButton();
+            toolStripButton_submitSteps_editSelectedStep = new ToolStripButton();
+            toolStripButton_submitSteps_deleteSelectedStep = new ToolStripButton();
+            groupBox6 = new GroupBox();
+            listView_pages = new ListView();
+            toolStrip1 = new ToolStrip();
+            toolStripButton_pageDefinitions_newPage = new ToolStripButton();
+            toolStripButton_pageDefinitions_editSelectedPage = new ToolStripButton();
+            toolStripButton_pageDefinitions_deleteSelectedPage = new ToolStripButton();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox4.SuspendLayout();
-            groupBox6.SuspendLayout();
             groupBox7.SuspendLayout();
+            toolStrip2.SuspendLayout();
+            groupBox6.SuspendLayout();
+            toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -134,32 +145,10 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Steps";
             // 
-            // groupBox6
-            // 
-            groupBox6.Controls.Add(listView_pages);
-            groupBox6.Dock = DockStyle.Top;
-            groupBox6.Location = new Point(3, 23);
-            groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(1165, 235);
-            groupBox6.TabIndex = 0;
-            groupBox6.TabStop = false;
-            groupBox6.Text = "Page Definitions";
-            // 
-            // listView_pages
-            // 
-            listView_pages.Dock = DockStyle.Fill;
-            listView_pages.FullRowSelect = true;
-            listView_pages.Location = new Point(3, 23);
-            listView_pages.MultiSelect = false;
-            listView_pages.Name = "listView_pages";
-            listView_pages.Size = new Size(1159, 209);
-            listView_pages.TabIndex = 4;
-            listView_pages.UseCompatibleStateImageBehavior = false;
-            listView_pages.View = View.Details;
-            // 
             // groupBox7
             // 
             groupBox7.Controls.Add(listView_onSubmit);
+            groupBox7.Controls.Add(toolStrip2);
             groupBox7.Dock = DockStyle.Top;
             groupBox7.Location = new Point(3, 258);
             groupBox7.Name = "groupBox7";
@@ -172,13 +161,120 @@
             // 
             listView_onSubmit.Dock = DockStyle.Fill;
             listView_onSubmit.FullRowSelect = true;
-            listView_onSubmit.Location = new Point(3, 23);
+            listView_onSubmit.Location = new Point(3, 50);
             listView_onSubmit.MultiSelect = false;
             listView_onSubmit.Name = "listView_onSubmit";
-            listView_onSubmit.Size = new Size(1159, 209);
+            listView_onSubmit.Size = new Size(1159, 182);
             listView_onSubmit.TabIndex = 4;
             listView_onSubmit.UseCompatibleStateImageBehavior = false;
             listView_onSubmit.View = View.Details;
+            listView_onSubmit.SelectedIndexChanged += listView_onSubmit_SelectedIndexChanged;
+            // 
+            // toolStrip2
+            // 
+            toolStrip2.ImageScalingSize = new Size(20, 20);
+            toolStrip2.Items.AddRange(new ToolStripItem[] { toolStripButton_submitSteps_newStep, toolStripButton_submitSteps_editSelectedStep, toolStripButton_submitSteps_deleteSelectedStep });
+            toolStrip2.Location = new Point(3, 23);
+            toolStrip2.Name = "toolStrip2";
+            toolStrip2.Size = new Size(1159, 27);
+            toolStrip2.TabIndex = 6;
+            toolStrip2.Text = "toolStrip2";
+            // 
+            // toolStripButton_submitSteps_newStep
+            // 
+            toolStripButton_submitSteps_newStep.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton_submitSteps_newStep.Image = (Image)resources.GetObject("toolStripButton_submitSteps_newStep.Image");
+            toolStripButton_submitSteps_newStep.ImageTransparentColor = Color.Magenta;
+            toolStripButton_submitSteps_newStep.Name = "toolStripButton_submitSteps_newStep";
+            toolStripButton_submitSteps_newStep.Size = new Size(77, 24);
+            toolStripButton_submitSteps_newStep.Text = "New Step";
+            // 
+            // toolStripButton_submitSteps_editSelectedStep
+            // 
+            toolStripButton_submitSteps_editSelectedStep.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton_submitSteps_editSelectedStep.Enabled = false;
+            toolStripButton_submitSteps_editSelectedStep.Image = (Image)resources.GetObject("toolStripButton_submitSteps_editSelectedStep.Image");
+            toolStripButton_submitSteps_editSelectedStep.ImageTransparentColor = Color.Magenta;
+            toolStripButton_submitSteps_editSelectedStep.Name = "toolStripButton_submitSteps_editSelectedStep";
+            toolStripButton_submitSteps_editSelectedStep.Size = new Size(134, 24);
+            toolStripButton_submitSteps_editSelectedStep.Text = "Edit Selected Step";
+            // 
+            // toolStripButton_submitSteps_deleteSelectedStep
+            // 
+            toolStripButton_submitSteps_deleteSelectedStep.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton_submitSteps_deleteSelectedStep.Enabled = false;
+            toolStripButton_submitSteps_deleteSelectedStep.ForeColor = Color.Red;
+            toolStripButton_submitSteps_deleteSelectedStep.Image = (Image)resources.GetObject("toolStripButton_submitSteps_deleteSelectedStep.Image");
+            toolStripButton_submitSteps_deleteSelectedStep.ImageTransparentColor = Color.Magenta;
+            toolStripButton_submitSteps_deleteSelectedStep.Name = "toolStripButton_submitSteps_deleteSelectedStep";
+            toolStripButton_submitSteps_deleteSelectedStep.Size = new Size(152, 24);
+            toolStripButton_submitSteps_deleteSelectedStep.Text = "Delete Selected Step";
+            // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(listView_pages);
+            groupBox6.Controls.Add(toolStrip1);
+            groupBox6.Dock = DockStyle.Top;
+            groupBox6.Location = new Point(3, 23);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(1165, 235);
+            groupBox6.TabIndex = 0;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Page Definitions";
+            // 
+            // listView_pages
+            // 
+            listView_pages.Dock = DockStyle.Fill;
+            listView_pages.FullRowSelect = true;
+            listView_pages.Location = new Point(3, 50);
+            listView_pages.MultiSelect = false;
+            listView_pages.Name = "listView_pages";
+            listView_pages.Size = new Size(1159, 182);
+            listView_pages.TabIndex = 4;
+            listView_pages.UseCompatibleStateImageBehavior = false;
+            listView_pages.View = View.Details;
+            listView_pages.SelectedIndexChanged += listView_pages_SelectedIndexChanged;
+            listView_pages.DoubleClick += listView_pages_DoubleClick;
+            // 
+            // toolStrip1
+            // 
+            toolStrip1.ImageScalingSize = new Size(20, 20);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton_pageDefinitions_newPage, toolStripButton_pageDefinitions_editSelectedPage, toolStripButton_pageDefinitions_deleteSelectedPage });
+            toolStrip1.Location = new Point(3, 23);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(1159, 27);
+            toolStrip1.TabIndex = 6;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton_pageDefinitions_newPage
+            // 
+            toolStripButton_pageDefinitions_newPage.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton_pageDefinitions_newPage.Image = (Image)resources.GetObject("toolStripButton_pageDefinitions_newPage.Image");
+            toolStripButton_pageDefinitions_newPage.ImageTransparentColor = Color.Magenta;
+            toolStripButton_pageDefinitions_newPage.Name = "toolStripButton_pageDefinitions_newPage";
+            toolStripButton_pageDefinitions_newPage.Size = new Size(79, 24);
+            toolStripButton_pageDefinitions_newPage.Text = "New Page";
+            // 
+            // toolStripButton_pageDefinitions_editSelectedPage
+            // 
+            toolStripButton_pageDefinitions_editSelectedPage.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton_pageDefinitions_editSelectedPage.Enabled = false;
+            toolStripButton_pageDefinitions_editSelectedPage.Image = (Image)resources.GetObject("toolStripButton_pageDefinitions_editSelectedPage.Image");
+            toolStripButton_pageDefinitions_editSelectedPage.ImageTransparentColor = Color.Magenta;
+            toolStripButton_pageDefinitions_editSelectedPage.Name = "toolStripButton_pageDefinitions_editSelectedPage";
+            toolStripButton_pageDefinitions_editSelectedPage.Size = new Size(136, 24);
+            toolStripButton_pageDefinitions_editSelectedPage.Text = "Edit Selected Page";
+            // 
+            // toolStripButton_pageDefinitions_deleteSelectedPage
+            // 
+            toolStripButton_pageDefinitions_deleteSelectedPage.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton_pageDefinitions_deleteSelectedPage.Enabled = false;
+            toolStripButton_pageDefinitions_deleteSelectedPage.ForeColor = Color.Red;
+            toolStripButton_pageDefinitions_deleteSelectedPage.Image = (Image)resources.GetObject("toolStripButton_pageDefinitions_deleteSelectedPage.Image");
+            toolStripButton_pageDefinitions_deleteSelectedPage.ImageTransparentColor = Color.Magenta;
+            toolStripButton_pageDefinitions_deleteSelectedPage.Name = "toolStripButton_pageDefinitions_deleteSelectedPage";
+            toolStripButton_pageDefinitions_deleteSelectedPage.Size = new Size(154, 24);
+            toolStripButton_pageDefinitions_deleteSelectedPage.Text = "Delete Selected Page";
             // 
             // FormDefinitionBuilder
             // 
@@ -200,8 +296,14 @@
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
             groupBox4.ResumeLayout(false);
-            groupBox6.ResumeLayout(false);
             groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
+            toolStrip2.ResumeLayout(false);
+            toolStrip2.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -219,5 +321,13 @@
         private ListView listView_onSubmit;
         private GroupBox groupBox6;
         private ListView listView_pages;
+        private ToolStrip toolStrip2;
+        private ToolStripButton toolStripButton_submitSteps_newStep;
+        private ToolStripButton toolStripButton_submitSteps_editSelectedStep;
+        private ToolStripButton toolStripButton_submitSteps_deleteSelectedStep;
+        private ToolStrip toolStrip1;
+        private ToolStripButton toolStripButton_pageDefinitions_newPage;
+        private ToolStripButton toolStripButton_pageDefinitions_editSelectedPage;
+        private ToolStripButton toolStripButton_pageDefinitions_deleteSelectedPage;
     }
 }

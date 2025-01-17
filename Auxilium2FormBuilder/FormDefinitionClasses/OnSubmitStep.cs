@@ -23,6 +23,7 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
         public required string? Value { get; set; }
         public required bool? ReplaceLastReturnURL { get; set; }
         public required string? IfStatement { get; set; }
+        public required JsonObject? Structure { get; set; }
 
 
         public static OnSubmitStep FromJSON(JsonNode jsonNode)
@@ -41,6 +42,7 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
             string? value = jsonNode["value"]?.GetValue<string>() ?? null;
             bool? replaceLastReturnURL = jsonNode["replace_last_return_url"]?.GetValue<bool>() ?? null;
             string? ifStatement = jsonNode["if"]?.GetValue<string>() ?? null;
+            JsonObject? structure = jsonNode["struct"] as JsonObject;
 
             OnSubmitStep builder = new()
             {
@@ -57,6 +59,7 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
                 Value = value,
                 ReplaceLastReturnURL = replaceLastReturnURL,
                 IfStatement = ifStatement,
+                Structure = jsonNode["struct"]?.AsObject(),
             };
 
             return builder;
@@ -70,12 +73,12 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
             };
 
             if (IfStatement != null) jsonObject["if"] = IfStatement;
-            // if (this.Struct != null) jsonObject["struct"] = this.Struct;
 
             if (Evaluation != null) jsonObject["eval"] = Evaluation;
             if (Content != null) jsonObject["content"] = Content;
             if (MIMEType != null) jsonObject["mime_type"] = MIMEType;
             if (Schema != null) jsonObject["schema"] = Schema;
+            if (Structure != null) jsonObject["struct"] = JsonNode.Parse(Structure.ToString());
             if (OutputVariable != null) jsonObject["output_variable"] = OutputVariable;
             if (Name != null) jsonObject["name"] = Name;
             if (Target != null) jsonObject["target"] = Target;
