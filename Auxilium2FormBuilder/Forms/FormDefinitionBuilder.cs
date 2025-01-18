@@ -48,6 +48,7 @@ namespace Auxilium2FormBuilder.Forms
                 this.listView_pages.Items.Add(item);
                 counter++;
             }
+            Program.UpdateFormDefTempFiles();
         }
 
         private void listView_pages_DoubleClick(object sender, EventArgs e)
@@ -90,6 +91,22 @@ namespace Auxilium2FormBuilder.Forms
                 this.toolStripButton_submitSteps_editSelectedStep.Enabled = false;
                 this.toolStripButton_submitSteps_deleteSelectedStep.Enabled = false;
             }
+        }
+
+        private void toolStripButton_pageDefinitions_newPage_Click(object sender, EventArgs e)
+        {
+            var newFormPage = new FormPage()
+            {
+                ID = null,
+                Title = "New Page",
+                Description = null,
+                If = null,
+                Components = []
+            };
+            Program.FormDefinitions[this.FormDefIndex].Pages.Add(newFormPage);
+            overwriteFieldsWithFileData();
+            new FormPageBuilder(this.FormDefIndex, Program.FormDefinitions[this.FormDefIndex].Pages.Count-1).ShowDialog();
+            overwriteFieldsWithFileData();
         }
     }
 }

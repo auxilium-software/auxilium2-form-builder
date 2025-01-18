@@ -85,6 +85,7 @@
             textBox_ifStatement.Name = "textBox_ifStatement";
             textBox_ifStatement.Size = new Size(388, 27);
             textBox_ifStatement.TabIndex = 1;
+            textBox_ifStatement.TextChanged += textBox_ifStatement_TextChanged;
             // 
             // groupBox_pageDescription
             // 
@@ -104,6 +105,7 @@
             textBox_description.Name = "textBox_description";
             textBox_description.Size = new Size(388, 27);
             textBox_description.TabIndex = 1;
+            textBox_description.TextChanged += textBox_description_TextChanged;
             // 
             // groupBox_pageTitle
             // 
@@ -123,6 +125,7 @@
             textBox_title.Name = "textBox_title";
             textBox_title.Size = new Size(388, 27);
             textBox_title.TabIndex = 1;
+            textBox_title.TextChanged += textBox_title_TextChanged;
             // 
             // groupBox_pageID
             // 
@@ -142,6 +145,7 @@
             textBox_pageID.Name = "textBox_pageID";
             textBox_pageID.Size = new Size(388, 27);
             textBox_pageID.TabIndex = 1;
+            textBox_pageID.TextChanged += textBox_pageID_TextChanged;
             // 
             // groupBox2
             // 

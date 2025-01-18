@@ -15,8 +15,35 @@ namespace Auxilium2FormBuilder
         {
             foreach(FormDefinition formDef in Program.FormDefinitions)
             {
-                formDef.SaveToFile();
+                formDef.SaveToFile(false);
             }
+        }
+
+        public static void UpdateFormDefTempFiles()
+        {
+            foreach (FormDefinition formDef in Program.FormDefinitions)
+            {
+                formDef.SaveToFile(false);
+            }
+        }
+
+
+        public static void UpdateFromFiles()
+        {
+            Program.FormDefinitions.Clear();
+            string[] files = Directory.GetFiles(path: Program.FormDefinitionDirectory, searchPattern: "*.json", searchOption: SearchOption.AllDirectories);
+            foreach (string file in files)
+            {
+                string fileContents = File.ReadAllText(file);
+                var jsonContents = JsonObject.Parse(fileContents);
+
+                Guid guid = Guid.Parse(file.Replace(oldValue: Program.FormDefinitionDirectory + "\\", newValue: "").Replace(oldValue: ".json", newValue: ""));
+
+                FormDefinition formDefinition = FormDefinition.FromJSON(guid: guid, jsonNode: jsonContents);
+
+                Program.FormDefinitions.Add(formDefinition);
+            }
+            Program.UpdateFormDefTempFiles();
         }
 
 
@@ -31,6 +58,11 @@ namespace Auxilium2FormBuilder
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new MainMenu());
+
+            foreach (FormDefinition formDef in Program.FormDefinitions)
+            {
+                formDef.DeleteFile(true);
+            }
         }
     }
 }

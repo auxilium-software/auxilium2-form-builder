@@ -254,6 +254,7 @@
             toolStripButton_pageDefinitions_newPage.Name = "toolStripButton_pageDefinitions_newPage";
             toolStripButton_pageDefinitions_newPage.Size = new Size(79, 24);
             toolStripButton_pageDefinitions_newPage.Text = "New Page";
+            toolStripButton_pageDefinitions_newPage.Click += toolStripButton_pageDefinitions_newPage_Click;
             // 
             // toolStripButton_pageDefinitions_editSelectedPage
             // 

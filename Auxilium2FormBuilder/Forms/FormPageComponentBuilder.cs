@@ -33,7 +33,7 @@ namespace Auxilium2FormBuilder.Forms
             this.textBox_defaultValue.Text = Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Components[this.FormPageComponentDefIndex].DefaultValue;
             this.textBox_outputVariable.Text = Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Components[this.FormPageComponentDefIndex].OutputVariable;
 
-
+            Program.UpdateFormDefTempFiles();
         }
 
         private void FormPageComponentBuilder_Load(object sender, EventArgs e)

@@ -14,7 +14,7 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
     {
         public required Guid ID { get; set; }
         public required string TextPrefabPath { get; set; }
-        public required FormPage[] Pages { get; set; }
+        public required List<FormPage> Pages { get; set; }
         public required bool ShouldFinalReview { get; set; }
         public required FinalReview? Review { get; set; }
         public required List<OnSubmitStep> OnSubmitOperations { get; set; }
@@ -24,7 +24,7 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
             string textPrefabPath = jsonNode["text_prefab_path"]?.GetValue<string>() ?? throw new InvalidOperationException("Missing 'text_prefab_path' in JSON.");
 
             var pagesNode = jsonNode["pages"] as JsonArray ?? throw new InvalidOperationException("Missing or invalid 'pages' in JSON.");
-            FormPage[] pages = pagesNode.Select(pageNode => FormPage.FromJSON(pageNode)).ToArray();
+            List<FormPage> pages = pagesNode.Select(pageNode => FormPage.FromJSON(pageNode)).ToList();
 
 
             bool finalReview = jsonNode["final_review"]?.GetValue<bool>() ?? throw new InvalidOperationException("Missing 'final_review' in JSON.");
@@ -68,12 +68,13 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
             return jsonObject;
         }
 
-        public void SaveToFile()
+        public void SaveToFile(bool tempFile)
         {
             if (string.IsNullOrEmpty(Program.FormDefinitionDirectory))
                 throw new ArgumentException("Directory path cannot be null or empty.", nameof(Program.FormDefinitionDirectory));
 
             string filePath = Path.Combine(Program.FormDefinitionDirectory, $"{ID}.json");
+            if (tempFile) filePath += ".tmp";
 
             var options = new JsonSerializerOptions
             {
@@ -87,6 +88,14 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
             jsonString = jsonString + "\n";
 
             File.WriteAllText(filePath, jsonString);
+        }
+
+        public void DeleteFile(bool tempFile)
+        {
+            string filePath = Path.Combine(Program.FormDefinitionDirectory, $"{ID}.json");
+            if (tempFile) filePath += ".tmp";
+
+            File.Delete(filePath);
         }
     }
 }

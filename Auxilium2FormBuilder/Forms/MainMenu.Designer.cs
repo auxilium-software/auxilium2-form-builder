@@ -33,6 +33,7 @@
             toolStrip_main = new ToolStrip();
             toolStrip_main__dropDownButton_file = new ToolStripDropDownButton();
             toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition = new ToolStripMenuItem();
+            toolStrip_main__dropDownButton_file__toolStripMenuItem_saveFormDefinitions = new ToolStripMenuItem();
             toolStrip_main__dropDownButton_file__toolStripMenuItem_exit = new ToolStripMenuItem();
             toolStrip_main__dropDownButton_settings = new ToolStripDropDownButton();
             toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory = new ToolStripMenuItem();
@@ -65,7 +66,7 @@
             // 
             // toolStrip_main__dropDownButton_file
             // 
-            toolStrip_main__dropDownButton_file.DropDownItems.AddRange(new ToolStripItem[] { toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition, toolStrip_main__dropDownButton_file__toolStripMenuItem_exit });
+            toolStrip_main__dropDownButton_file.DropDownItems.AddRange(new ToolStripItem[] { toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition, toolStrip_main__dropDownButton_file__toolStripMenuItem_saveFormDefinitions, toolStrip_main__dropDownButton_file__toolStripMenuItem_exit });
             toolStrip_main__dropDownButton_file.Image = (Image)resources.GetObject("toolStrip_main__dropDownButton_file.Image");
             toolStrip_main__dropDownButton_file.ImageTransparentColor = Color.Magenta;
             toolStrip_main__dropDownButton_file.Name = "toolStrip_main__dropDownButton_file";
@@ -77,13 +78,22 @@
             // 
             toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition.Enabled = false;
             toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition.Name = "toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition";
-            toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition.Size = new Size(230, 26);
+            toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition.Size = new Size(237, 26);
             toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition.Text = "New Form Definition";
+            toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition.Click += toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition_Click;
+            // 
+            // toolStrip_main__dropDownButton_file__toolStripMenuItem_saveFormDefinitions
+            // 
+            toolStrip_main__dropDownButton_file__toolStripMenuItem_saveFormDefinitions.Enabled = false;
+            toolStrip_main__dropDownButton_file__toolStripMenuItem_saveFormDefinitions.Name = "toolStrip_main__dropDownButton_file__toolStripMenuItem_saveFormDefinitions";
+            toolStrip_main__dropDownButton_file__toolStripMenuItem_saveFormDefinitions.Size = new Size(237, 26);
+            toolStrip_main__dropDownButton_file__toolStripMenuItem_saveFormDefinitions.Text = "Save Form Definitions";
+            toolStrip_main__dropDownButton_file__toolStripMenuItem_saveFormDefinitions.Click += toolStrip_main__dropDownButton_file__toolStripMenuItem_saveFormDefinitions_Click;
             // 
             // toolStrip_main__dropDownButton_file__toolStripMenuItem_exit
             // 
             toolStrip_main__dropDownButton_file__toolStripMenuItem_exit.Name = "toolStrip_main__dropDownButton_file__toolStripMenuItem_exit";
-            toolStrip_main__dropDownButton_file__toolStripMenuItem_exit.Size = new Size(230, 26);
+            toolStrip_main__dropDownButton_file__toolStripMenuItem_exit.Size = new Size(237, 26);
             toolStrip_main__dropDownButton_file__toolStripMenuItem_exit.Text = "Exit";
             toolStrip_main__dropDownButton_file__toolStripMenuItem_exit.Click += toolStrip_main__dropDownButton_file__toolStripMenuItem_exit_Click;
             // 
@@ -99,7 +109,7 @@
             // toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory
             // 
             toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory.Name = "toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory";
-            toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory.Size = new Size(216, 26);
+            toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory.Size = new Size(224, 26);
             toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory.Text = "Set Form Directory";
             toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory.Click += toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory_Click;
             // 
@@ -129,5 +139,6 @@
         private ToolStripMenuItem toolStrip_main__dropDownButton_file__toolStripMenuItem_exit;
         private ToolStripDropDownButton toolStrip_main__dropDownButton_settings;
         private ToolStripMenuItem toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory;
+        private ToolStripMenuItem toolStrip_main__dropDownButton_file__toolStripMenuItem_saveFormDefinitions;
     }
 }

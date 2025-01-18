@@ -50,6 +50,7 @@ namespace Auxilium2FormBuilder.Forms
                 this.listView_pageComponents.Items.Add(item);
                 counter++;
             }
+            Program.UpdateFormDefTempFiles();
         }
 
         private void FormPageBuilder_Load(object sender, EventArgs e)
@@ -60,8 +61,8 @@ namespace Auxilium2FormBuilder.Forms
         private void toolStripButton_pageComponents_newComponent_Click(object sender, EventArgs e)
         {
             new NewFormPageComponentTypeSelector(formDefIndex: this.FormDefIndex, formPageDefIndex: this.FormPageDefIndex).ShowDialog();
-            overwriteFieldsWithFileData();
             new FormPageComponentBuilder(formDefIndex: this.FormDefIndex, formPageDefIndex: this.FormPageDefIndex, formPageComponentDefIndex: this.listView_pageComponents.Items.Count - 1).ShowDialog();
+            overwriteFieldsWithFileData();
         }
 
         private void toolStripButton_pageComponents_editSelectedComponent_Click(object sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace Auxilium2FormBuilder.Forms
 
         private void listView_pageComponents_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listView_pageComponents.SelectedItems.Count == 1)
+            if (listView_pageComponents.SelectedItems.Count == 1)
             {
                 this.toolStripButton_pageComponents_editSelectedComponent.Enabled = true;
                 this.toolStripButton_pageComponents_deleteSelectedComponent.Enabled = true;
@@ -92,6 +93,30 @@ namespace Auxilium2FormBuilder.Forms
                 this.toolStripButton_pageComponents_editSelectedComponent.Enabled = false;
                 this.toolStripButton_pageComponents_deleteSelectedComponent.Enabled = false;
             }
+        }
+
+        private void textBox_pageID_TextChanged(object sender, EventArgs e)
+        {
+            Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].ID = textBox_pageID.Text;
+            this.overwriteFieldsWithFileData();
+        }
+
+        private void textBox_title_TextChanged(object sender, EventArgs e)
+        {
+            Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Title = textBox_title.Text;
+            this.overwriteFieldsWithFileData();
+        }
+
+        private void textBox_description_TextChanged(object sender, EventArgs e)
+        {
+            Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Description = textBox_description.Text;
+            this.overwriteFieldsWithFileData();
+        }
+
+        private void textBox_ifStatement_TextChanged(object sender, EventArgs e)
+        {
+            Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].If = textBox_ifStatement.Text;
+            this.overwriteFieldsWithFileData();
         }
     }
 }
