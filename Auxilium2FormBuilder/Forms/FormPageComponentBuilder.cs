@@ -85,6 +85,12 @@ namespace Auxilium2FormBuilder.Forms
             Program.UpdateFormDefTempFiles();
         }
 
+        private void checkBox_required_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].Components[this.FormPageComponentDefIndex].Required = checkBox_required.Checked;
+            Program.UpdateFormDefTempFiles();
+        }
+
 
 
 
@@ -140,6 +146,5 @@ namespace Auxilium2FormBuilder.Forms
                 this.overwriteFieldsWithFileData();
             }
         }
-
     }
 }

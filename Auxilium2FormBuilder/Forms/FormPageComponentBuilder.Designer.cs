@@ -34,7 +34,7 @@
             listView_options = new ListView();
             toolStrip1 = new ToolStrip();
             toolStripButton_choiceFieldOptions_newOption = new ToolStripButton();
-            toolStripButton_choiceFieldOptions_editSelectedOption= new ToolStripButton();
+            toolStripButton_choiceFieldOptions_editSelectedOption = new ToolStripButton();
             toolStripButton_choiceFieldOptions_deleteSelectedOption = new ToolStripButton();
             groupBox1 = new GroupBox();
             groupBox_outputVariable = new GroupBox();
@@ -45,6 +45,8 @@
             textBox_label = new TextBox();
             groupBox_type = new GroupBox();
             comboBox_type = new ComboBox();
+            groupBox_required = new GroupBox();
+            checkBox_required = new CheckBox();
             groupBox2.SuspendLayout();
             groupBox_choiceFieldOptions.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -53,6 +55,7 @@
             groupBox_defaultValue.SuspendLayout();
             groupBox_label.SuspendLayout();
             groupBox_type.SuspendLayout();
+            groupBox_required.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox2
@@ -122,7 +125,7 @@
             toolStripButton_choiceFieldOptions_editSelectedOption.Name = "toolStripButton_choiceFieldOptions_editSelectedOption";
             toolStripButton_choiceFieldOptions_editSelectedOption.Size = new Size(150, 24);
             toolStripButton_choiceFieldOptions_editSelectedOption.Text = "Edit Selected Option";
-            toolStripButton_choiceFieldOptions_editSelectedOption.Click += this.toolStripButton_choiceFieldOptions_editSelectedOption_Click;
+            toolStripButton_choiceFieldOptions_editSelectedOption.Click += toolStripButton_choiceFieldOptions_editSelectedOption_Click;
             // 
             // toolStripButton_choiceFieldOptions_deleteSelectedOption
             // 
@@ -138,6 +141,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(groupBox_required);
             groupBox1.Controls.Add(groupBox_outputVariable);
             groupBox1.Controls.Add(groupBox_defaultValue);
             groupBox1.Controls.Add(groupBox_label);
@@ -232,6 +236,28 @@
             comboBox_type.Size = new Size(388, 28);
             comboBox_type.TabIndex = 0;
             // 
+            // groupBox_required
+            // 
+            groupBox_required.Controls.Add(checkBox_required);
+            groupBox_required.Dock = DockStyle.Top;
+            groupBox_required.Location = new Point(3, 231);
+            groupBox_required.Name = "groupBox_required";
+            groupBox_required.Size = new Size(394, 52);
+            groupBox_required.TabIndex = 5;
+            groupBox_required.TabStop = false;
+            groupBox_required.Text = "Required";
+            // 
+            // checkBox_required
+            // 
+            checkBox_required.AutoSize = true;
+            checkBox_required.Dock = DockStyle.Fill;
+            checkBox_required.Location = new Point(3, 23);
+            checkBox_required.Name = "checkBox_required";
+            checkBox_required.Size = new Size(388, 26);
+            checkBox_required.TabIndex = 0;
+            checkBox_required.UseVisualStyleBackColor = true;
+            checkBox_required.CheckedChanged += checkBox_required_CheckedChanged;
+            // 
             // FormPageComponentBuilder
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -257,6 +283,8 @@
             groupBox_label.ResumeLayout(false);
             groupBox_label.PerformLayout();
             groupBox_type.ResumeLayout(false);
+            groupBox_required.ResumeLayout(false);
+            groupBox_required.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -278,5 +306,7 @@
         private ToolStripButton toolStripButton_choiceFieldOptions_newOption;
         private ToolStripButton toolStripButton_choiceFieldOptions_editSelectedOption;
         private ToolStripButton toolStripButton_choiceFieldOptions_deleteSelectedOption;
+        private GroupBox groupBox_required;
+        private CheckBox checkBox_required;
     }
 }

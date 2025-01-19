@@ -72,7 +72,7 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
             };
 
             if (Rows != null) jsonObject["rows"] = Rows;
-            if (Options != null) jsonObject["options"] = new JsonArray(Options.Select(option => option.ToJSON()).ToArray());
+            if (Options != null && Options.Count > 0) jsonObject["options"] = new JsonArray(Options.Select(option => option.ToJSON()).ToArray());
 
             if (Label != null && Label != "") jsonObject["label"] = Label;
             if (DefaultValue != null && DefaultValue != "") jsonObject["default_value"] = DefaultValue;
