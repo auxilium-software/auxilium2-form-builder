@@ -4,3 +4,5 @@ Auxilium2FormBuilder/bin/
 Auxilium2FormBuilder/Properties/
 
 *.user
+
+Releases/**/*.pdb

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Auxilium2FormBuilder/1.0.0": {
+        "runtime": {
+          "Auxilium2FormBuilder.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Auxilium2FormBuilder/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
