@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDefinitionBuilder));
             groupBox1 = new GroupBox();
-            textBox1 = new TextBox();
+            textBox_textPrefabPath = new TextBox();
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
-            checkBox1 = new CheckBox();
+            checkBox_shouldFinalReview = new CheckBox();
             groupBox5 = new GroupBox();
             textBox_fileUUID = new TextBox();
             groupBox4 = new GroupBox();
@@ -43,6 +43,12 @@
             toolStripButton_submitSteps_newStep = new ToolStripButton();
             toolStripButton_submitSteps_editSelectedStep = new ToolStripButton();
             toolStripButton_submitSteps_deleteSelectedStep = new ToolStripButton();
+            groupBox_finalReviewSteps = new GroupBox();
+            listView1 = new ListView();
+            toolStrip3 = new ToolStrip();
+            toolStripButton1 = new ToolStripButton();
+            toolStripButton2 = new ToolStripButton();
+            toolStripButton3 = new ToolStripButton();
             groupBox6 = new GroupBox();
             listView_pages = new ListView();
             toolStrip1 = new ToolStrip();
@@ -56,13 +62,15 @@
             groupBox4.SuspendLayout();
             groupBox7.SuspendLayout();
             toolStrip2.SuspendLayout();
+            groupBox_finalReviewSteps.SuspendLayout();
+            toolStrip3.SuspendLayout();
             groupBox6.SuspendLayout();
             toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(textBox_textPrefabPath);
             groupBox1.Dock = DockStyle.Top;
             groupBox1.Location = new Point(3, 75);
             groupBox1.Name = "groupBox1";
@@ -71,13 +79,14 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Text Prefab Path";
             // 
-            // textBox1
+            // textBox_textPrefabPath
             // 
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Location = new Point(3, 23);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(388, 27);
-            textBox1.TabIndex = 1;
+            textBox_textPrefabPath.Dock = DockStyle.Fill;
+            textBox_textPrefabPath.Location = new Point(3, 23);
+            textBox_textPrefabPath.Name = "textBox_textPrefabPath";
+            textBox_textPrefabPath.Size = new Size(388, 27);
+            textBox_textPrefabPath.TabIndex = 1;
+            textBox_textPrefabPath.TextChanged += textBox_textPrefabPath_TextChanged;
             // 
             // groupBox2
             // 
@@ -87,31 +96,32 @@
             groupBox2.Dock = DockStyle.Left;
             groupBox2.Location = new Point(0, 0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(400, 562);
+            groupBox2.Size = new Size(400, 792);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Options";
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(checkBox1);
+            groupBox3.Controls.Add(checkBox_shouldFinalReview);
             groupBox3.Dock = DockStyle.Top;
             groupBox3.Location = new Point(3, 127);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(394, 52);
             groupBox3.TabIndex = 1;
             groupBox3.TabStop = false;
-            groupBox3.Text = "Is required?";
+            groupBox3.Text = "Final Review?";
             // 
-            // checkBox1
+            // checkBox_shouldFinalReview
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Dock = DockStyle.Top;
-            checkBox1.Location = new Point(3, 23);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(388, 17);
-            checkBox1.TabIndex = 3;
-            checkBox1.UseVisualStyleBackColor = true;
+            checkBox_shouldFinalReview.AutoSize = true;
+            checkBox_shouldFinalReview.Dock = DockStyle.Top;
+            checkBox_shouldFinalReview.Location = new Point(3, 23);
+            checkBox_shouldFinalReview.Name = "checkBox_shouldFinalReview";
+            checkBox_shouldFinalReview.Size = new Size(388, 17);
+            checkBox_shouldFinalReview.TabIndex = 3;
+            checkBox_shouldFinalReview.UseVisualStyleBackColor = true;
+            checkBox_shouldFinalReview.CheckedChanged += checkBox_shouldFinalReview_CheckedChanged;
             // 
             // groupBox5
             // 
@@ -136,11 +146,12 @@
             // groupBox4
             // 
             groupBox4.Controls.Add(groupBox7);
+            groupBox4.Controls.Add(groupBox_finalReviewSteps);
             groupBox4.Controls.Add(groupBox6);
             groupBox4.Dock = DockStyle.Fill;
             groupBox4.Location = new Point(400, 0);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(1171, 562);
+            groupBox4.Size = new Size(1171, 792);
             groupBox4.TabIndex = 3;
             groupBox4.TabStop = false;
             groupBox4.Text = "Steps";
@@ -150,9 +161,9 @@
             groupBox7.Controls.Add(listView_onSubmit);
             groupBox7.Controls.Add(toolStrip2);
             groupBox7.Dock = DockStyle.Top;
-            groupBox7.Location = new Point(3, 258);
+            groupBox7.Location = new Point(3, 523);
             groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(1165, 235);
+            groupBox7.Size = new Size(1165, 250);
             groupBox7.TabIndex = 1;
             groupBox7.TabStop = false;
             groupBox7.Text = "On Submit...";
@@ -164,7 +175,7 @@
             listView_onSubmit.Location = new Point(3, 50);
             listView_onSubmit.MultiSelect = false;
             listView_onSubmit.Name = "listView_onSubmit";
-            listView_onSubmit.Size = new Size(1159, 182);
+            listView_onSubmit.Size = new Size(1159, 197);
             listView_onSubmit.TabIndex = 4;
             listView_onSubmit.UseCompatibleStateImageBehavior = false;
             listView_onSubmit.View = View.Details;
@@ -210,6 +221,71 @@
             toolStripButton_submitSteps_deleteSelectedStep.Size = new Size(152, 24);
             toolStripButton_submitSteps_deleteSelectedStep.Text = "Delete Selected Step";
             // 
+            // groupBox_finalReviewSteps
+            // 
+            groupBox_finalReviewSteps.Controls.Add(listView1);
+            groupBox_finalReviewSteps.Controls.Add(toolStrip3);
+            groupBox_finalReviewSteps.Dock = DockStyle.Top;
+            groupBox_finalReviewSteps.Enabled = false;
+            groupBox_finalReviewSteps.Location = new Point(3, 273);
+            groupBox_finalReviewSteps.Name = "groupBox_finalReviewSteps";
+            groupBox_finalReviewSteps.Size = new Size(1165, 250);
+            groupBox_finalReviewSteps.TabIndex = 5;
+            groupBox_finalReviewSteps.TabStop = false;
+            groupBox_finalReviewSteps.Text = "Final Review Steps...";
+            // 
+            // listView1
+            // 
+            listView1.Dock = DockStyle.Fill;
+            listView1.FullRowSelect = true;
+            listView1.Location = new Point(3, 50);
+            listView1.MultiSelect = false;
+            listView1.Name = "listView1";
+            listView1.Size = new Size(1159, 197);
+            listView1.TabIndex = 4;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            // 
+            // toolStrip3
+            // 
+            toolStrip3.ImageScalingSize = new Size(20, 20);
+            toolStrip3.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2, toolStripButton3 });
+            toolStrip3.Location = new Point(3, 23);
+            toolStrip3.Name = "toolStrip3";
+            toolStrip3.Size = new Size(1159, 27);
+            toolStrip3.TabIndex = 6;
+            toolStrip3.Text = "toolStrip3";
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(77, 24);
+            toolStripButton1.Text = "New Step";
+            // 
+            // toolStripButton2
+            // 
+            toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton2.Enabled = false;
+            toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
+            toolStripButton2.ImageTransparentColor = Color.Magenta;
+            toolStripButton2.Name = "toolStripButton2";
+            toolStripButton2.Size = new Size(134, 24);
+            toolStripButton2.Text = "Edit Selected Step";
+            // 
+            // toolStripButton3
+            // 
+            toolStripButton3.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton3.Enabled = false;
+            toolStripButton3.ForeColor = Color.Red;
+            toolStripButton3.Image = (Image)resources.GetObject("toolStripButton3.Image");
+            toolStripButton3.ImageTransparentColor = Color.Magenta;
+            toolStripButton3.Name = "toolStripButton3";
+            toolStripButton3.Size = new Size(152, 24);
+            toolStripButton3.Text = "Delete Selected Step";
+            // 
             // groupBox6
             // 
             groupBox6.Controls.Add(listView_pages);
@@ -217,7 +293,7 @@
             groupBox6.Dock = DockStyle.Top;
             groupBox6.Location = new Point(3, 23);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(1165, 235);
+            groupBox6.Size = new Size(1165, 250);
             groupBox6.TabIndex = 0;
             groupBox6.TabStop = false;
             groupBox6.Text = "Page Definitions";
@@ -229,7 +305,7 @@
             listView_pages.Location = new Point(3, 50);
             listView_pages.MultiSelect = false;
             listView_pages.Name = "listView_pages";
-            listView_pages.Size = new Size(1159, 182);
+            listView_pages.Size = new Size(1159, 197);
             listView_pages.TabIndex = 4;
             listView_pages.UseCompatibleStateImageBehavior = false;
             listView_pages.View = View.Details;
@@ -281,13 +357,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1571, 562);
+            ClientSize = new Size(1571, 792);
             Controls.Add(groupBox4);
             Controls.Add(groupBox2);
             Name = "FormDefinitionBuilder";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormDefinitionBuilder";
-            WindowState = FormWindowState.Maximized;
             Load += FormDefinitionBuilder_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -301,6 +376,10 @@
             groupBox7.PerformLayout();
             toolStrip2.ResumeLayout(false);
             toolStrip2.PerformLayout();
+            groupBox_finalReviewSteps.ResumeLayout(false);
+            groupBox_finalReviewSteps.PerformLayout();
+            toolStrip3.ResumeLayout(false);
+            toolStrip3.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
             toolStrip1.ResumeLayout(false);
@@ -311,10 +390,10 @@
         #endregion
 
         private GroupBox groupBox1;
-        private TextBox textBox1;
+        private TextBox textBox_textPrefabPath;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
-        private CheckBox checkBox1;
+        private CheckBox checkBox_shouldFinalReview;
         private GroupBox groupBox4;
         private GroupBox groupBox5;
         private TextBox textBox_fileUUID;
@@ -330,5 +409,11 @@
         private ToolStripButton toolStripButton_pageDefinitions_newPage;
         private ToolStripButton toolStripButton_pageDefinitions_editSelectedPage;
         private ToolStripButton toolStripButton_pageDefinitions_deleteSelectedPage;
+        private GroupBox groupBox_finalReviewSteps;
+        private ListView listView1;
+        private ToolStrip toolStrip3;
+        private ToolStripButton toolStripButton1;
+        private ToolStripButton toolStripButton2;
+        private ToolStripButton toolStripButton3;
     }
 }

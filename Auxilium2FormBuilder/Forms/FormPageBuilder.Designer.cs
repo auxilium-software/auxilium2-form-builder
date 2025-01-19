@@ -171,6 +171,7 @@
             listView_pageComponents.UseCompatibleStateImageBehavior = false;
             listView_pageComponents.View = View.Details;
             listView_pageComponents.SelectedIndexChanged += listView_pageComponents_SelectedIndexChanged;
+            listView_pageComponents.DoubleClick += listView_pageComponents_DoubleClick;
             // 
             // toolStrip1
             // 

@@ -28,7 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPageComponentBuilder));
             groupBox2 = new GroupBox();
+            groupBox_choiceFieldOptions = new GroupBox();
+            listView_options = new ListView();
+            toolStrip1 = new ToolStrip();
+            toolStripButton_choiceFieldOptions_newOption = new ToolStripButton();
+            toolStripButton_choiceFieldOptions_editSelectedOption= new ToolStripButton();
+            toolStripButton_choiceFieldOptions_deleteSelectedOption = new ToolStripButton();
             groupBox1 = new GroupBox();
             groupBox_outputVariable = new GroupBox();
             textBox_outputVariable = new TextBox();
@@ -38,6 +45,9 @@
             textBox_label = new TextBox();
             groupBox_type = new GroupBox();
             comboBox_type = new ComboBox();
+            groupBox2.SuspendLayout();
+            groupBox_choiceFieldOptions.SuspendLayout();
+            toolStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox_outputVariable.SuspendLayout();
             groupBox_defaultValue.SuspendLayout();
@@ -47,6 +57,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(groupBox_choiceFieldOptions);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Point(400, 0);
             groupBox2.Name = "groupBox2";
@@ -54,6 +65,76 @@
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "Page Components";
+            // 
+            // groupBox_choiceFieldOptions
+            // 
+            groupBox_choiceFieldOptions.Controls.Add(listView_options);
+            groupBox_choiceFieldOptions.Controls.Add(toolStrip1);
+            groupBox_choiceFieldOptions.Dock = DockStyle.Top;
+            groupBox_choiceFieldOptions.Enabled = false;
+            groupBox_choiceFieldOptions.Location = new Point(3, 23);
+            groupBox_choiceFieldOptions.Name = "groupBox_choiceFieldOptions";
+            groupBox_choiceFieldOptions.Size = new Size(757, 250);
+            groupBox_choiceFieldOptions.TabIndex = 1;
+            groupBox_choiceFieldOptions.TabStop = false;
+            groupBox_choiceFieldOptions.Text = "Options (Choice Field Only)";
+            // 
+            // listView_options
+            // 
+            listView_options.Dock = DockStyle.Fill;
+            listView_options.FullRowSelect = true;
+            listView_options.Location = new Point(3, 50);
+            listView_options.MultiSelect = false;
+            listView_options.Name = "listView_options";
+            listView_options.Size = new Size(751, 197);
+            listView_options.TabIndex = 4;
+            listView_options.UseCompatibleStateImageBehavior = false;
+            listView_options.View = View.Details;
+            listView_options.SelectedIndexChanged += listView_options_SelectedIndexChanged;
+            listView_options.DoubleClick += listView_options_DoubleClick;
+            // 
+            // toolStrip1
+            // 
+            toolStrip1.ImageScalingSize = new Size(20, 20);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton_choiceFieldOptions_newOption, toolStripButton_choiceFieldOptions_editSelectedOption, toolStripButton_choiceFieldOptions_deleteSelectedOption });
+            toolStrip1.Location = new Point(3, 23);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(751, 27);
+            toolStrip1.TabIndex = 6;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton_choiceFieldOptions_newOption
+            // 
+            toolStripButton_choiceFieldOptions_newOption.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton_choiceFieldOptions_newOption.Image = (Image)resources.GetObject("toolStripButton_choiceFieldOptions_newOption.Image");
+            toolStripButton_choiceFieldOptions_newOption.ImageTransparentColor = Color.Magenta;
+            toolStripButton_choiceFieldOptions_newOption.Name = "toolStripButton_choiceFieldOptions_newOption";
+            toolStripButton_choiceFieldOptions_newOption.Size = new Size(93, 24);
+            toolStripButton_choiceFieldOptions_newOption.Text = "New Option";
+            toolStripButton_choiceFieldOptions_newOption.Click += toolStripButton_choiceFieldOptions_newOption_Click;
+            // 
+            // toolStripButton_choiceFieldOptions_editSelectedOption
+            // 
+            toolStripButton_choiceFieldOptions_editSelectedOption.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton_choiceFieldOptions_editSelectedOption.Enabled = false;
+            toolStripButton_choiceFieldOptions_editSelectedOption.Image = (Image)resources.GetObject("toolStripButton_choiceFieldOptions_editSelectedOption.Image");
+            toolStripButton_choiceFieldOptions_editSelectedOption.ImageTransparentColor = Color.Magenta;
+            toolStripButton_choiceFieldOptions_editSelectedOption.Name = "toolStripButton_choiceFieldOptions_editSelectedOption";
+            toolStripButton_choiceFieldOptions_editSelectedOption.Size = new Size(150, 24);
+            toolStripButton_choiceFieldOptions_editSelectedOption.Text = "Edit Selected Option";
+            toolStripButton_choiceFieldOptions_editSelectedOption.Click += this.toolStripButton_choiceFieldOptions_editSelectedOption_Click;
+            // 
+            // toolStripButton_choiceFieldOptions_deleteSelectedOption
+            // 
+            toolStripButton_choiceFieldOptions_deleteSelectedOption.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolStripButton_choiceFieldOptions_deleteSelectedOption.Enabled = false;
+            toolStripButton_choiceFieldOptions_deleteSelectedOption.ForeColor = Color.Red;
+            toolStripButton_choiceFieldOptions_deleteSelectedOption.Image = (Image)resources.GetObject("toolStripButton_choiceFieldOptions_deleteSelectedOption.Image");
+            toolStripButton_choiceFieldOptions_deleteSelectedOption.ImageTransparentColor = Color.Magenta;
+            toolStripButton_choiceFieldOptions_deleteSelectedOption.Name = "toolStripButton_choiceFieldOptions_deleteSelectedOption";
+            toolStripButton_choiceFieldOptions_deleteSelectedOption.Size = new Size(168, 24);
+            toolStripButton_choiceFieldOptions_deleteSelectedOption.Text = "Delete Selected Option";
+            toolStripButton_choiceFieldOptions_deleteSelectedOption.Click += toolStripButton_choiceFieldOptions_deleteSelectedOption_Click;
             // 
             // groupBox1
             // 
@@ -163,6 +244,11 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormPageComponentBuilder";
             Load += FormPageComponentBuilder_Load;
+            groupBox2.ResumeLayout(false);
+            groupBox_choiceFieldOptions.ResumeLayout(false);
+            groupBox_choiceFieldOptions.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox_outputVariable.ResumeLayout(false);
             groupBox_outputVariable.PerformLayout();
@@ -186,5 +272,11 @@
         private TextBox textBox_label;
         private GroupBox groupBox_type;
         private ComboBox comboBox_type;
+        private GroupBox groupBox_choiceFieldOptions;
+        private ListView listView_options;
+        private ToolStrip toolStrip1;
+        private ToolStripButton toolStripButton_choiceFieldOptions_newOption;
+        private ToolStripButton toolStripButton_choiceFieldOptions_editSelectedOption;
+        private ToolStripButton toolStripButton_choiceFieldOptions_deleteSelectedOption;
     }
 }

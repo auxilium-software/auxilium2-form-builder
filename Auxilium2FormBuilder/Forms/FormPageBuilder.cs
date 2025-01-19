@@ -61,7 +61,7 @@ namespace Auxilium2FormBuilder.Forms
         private void toolStripButton_pageComponents_newComponent_Click(object sender, EventArgs e)
         {
             new NewFormPageComponentTypeSelector(formDefIndex: this.FormDefIndex, formPageDefIndex: this.FormPageDefIndex).ShowDialog();
-            new FormPageComponentBuilder(formDefIndex: this.FormDefIndex, formPageDefIndex: this.FormPageDefIndex, formPageComponentDefIndex: this.listView_pageComponents.Items.Count - 1).ShowDialog();
+            new FormPageComponentBuilder(formDefIndex: this.FormDefIndex, formPageDefIndex: this.FormPageDefIndex, formPageComponentDefIndex: this.listView_pageComponents.Items.Count).ShowDialog();
             overwriteFieldsWithFileData();
         }
 
@@ -73,6 +73,18 @@ namespace Auxilium2FormBuilder.Forms
                 formPageComponentDefIndex: System.Convert.ToInt32(this.listView_pageComponents.SelectedItems[0].Tag)
                 ).ShowDialog();
             overwriteFieldsWithFileData();
+        }
+        private void listView_pageComponents_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView_pageComponents.SelectedItems.Count == 1)
+            {
+                new FormPageComponentBuilder(
+                    formDefIndex: this.FormDefIndex,
+                    formPageDefIndex: this.FormPageDefIndex,
+                    formPageComponentDefIndex: System.Convert.ToInt32(this.listView_pageComponents.SelectedItems[0].Tag)
+                    ).ShowDialog();
+                overwriteFieldsWithFileData();
+            }
         }
 
         private void toolStripButton_pageComponents_deleteSelectedComponent_Click(object sender, EventArgs e)

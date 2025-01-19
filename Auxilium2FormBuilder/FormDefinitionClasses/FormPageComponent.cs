@@ -16,7 +16,7 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
 
 
         public required int? Rows { get; set; }
-        public required FormComponentChoiceFieldOption[]? Options { get; set; }
+        public required List<FormComponentChoiceFieldOption>? Options { get; set; }
 
 
         public required string? Label { get; set; }
@@ -34,9 +34,9 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
             int? rows = jsonNode["rows"]?.GetValue<int>() ?? null;
 
             var optionsNode = jsonNode["options"] as JsonArray ?? null;
-            FormComponentChoiceFieldOption[]? options = null;
+            List<FormComponentChoiceFieldOption>? options = null;
             if (optionsNode != null)
-                options = optionsNode.Select(pageNode => FormComponentChoiceFieldOption.FromJSON(pageNode)).ToArray();
+                options = optionsNode.Select(pageNode => FormComponentChoiceFieldOption.FromJSON(pageNode)).ToList();
 
 
 
@@ -74,8 +74,8 @@ namespace Auxilium2FormBuilder.FormDefinitionClasses
             if (Rows != null) jsonObject["rows"] = Rows;
             if (Options != null) jsonObject["options"] = new JsonArray(Options.Select(option => option.ToJSON()).ToArray());
 
-            if (Label != null) jsonObject["label"] = Label;
-            if (DefaultValue != null) jsonObject["default_value"] = DefaultValue;
+            if (Label != null && Label != "") jsonObject["label"] = Label;
+            if (DefaultValue != null && DefaultValue != "") jsonObject["default_value"] = DefaultValue;
             jsonObject["output_variable"] = OutputVariable;
             jsonObject["required"] = Required;
             return jsonObject;

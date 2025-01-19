@@ -26,8 +26,8 @@ namespace Auxilium2FormBuilder.Forms
         public void overwriteFieldsWithFileData()
         {
             this.textBox_fileUUID.Text = Program.FormDefinitions[this.FormDefIndex].ID.ToString();
-            this.textBox1.Text = Program.FormDefinitions[this.FormDefIndex].TextPrefabPath;
-            this.checkBox1.Checked = Program.FormDefinitions[this.FormDefIndex].ShouldFinalReview;
+            this.textBox_textPrefabPath.Text = Program.FormDefinitions[this.FormDefIndex].TextPrefabPath;
+            this.checkBox_shouldFinalReview.Checked = Program.FormDefinitions[this.FormDefIndex].ShouldFinalReview;
 
             this.listView_pages.Clear();
             this.listView_pages.Columns.Add("ID", 300);
@@ -105,7 +105,20 @@ namespace Auxilium2FormBuilder.Forms
             };
             Program.FormDefinitions[this.FormDefIndex].Pages.Add(newFormPage);
             overwriteFieldsWithFileData();
-            new FormPageBuilder(this.FormDefIndex, Program.FormDefinitions[this.FormDefIndex].Pages.Count-1).ShowDialog();
+            new FormPageBuilder(this.FormDefIndex, Program.FormDefinitions[this.FormDefIndex].Pages.Count - 1).ShowDialog();
+            overwriteFieldsWithFileData();
+        }
+
+        private void textBox_textPrefabPath_TextChanged(object sender, EventArgs e)
+        {
+            Program.FormDefinitions[this.FormDefIndex].TextPrefabPath = textBox_textPrefabPath.Text;
+            overwriteFieldsWithFileData();
+        }
+
+        private void checkBox_shouldFinalReview_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.FormDefinitions[this.FormDefIndex].ShouldFinalReview = checkBox_shouldFinalReview.Checked;
+            this.groupBox_finalReviewSteps.Enabled = checkBox_shouldFinalReview.Checked;
             overwriteFieldsWithFileData();
         }
     }
