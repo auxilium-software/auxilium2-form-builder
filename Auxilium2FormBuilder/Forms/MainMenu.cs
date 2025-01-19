@@ -62,7 +62,7 @@ namespace Auxilium2FormBuilder.Forms
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 Program.FormDefinitionDirectory = dialog.SelectedPath;
-                Program.LocalisedStringsFilePath = Path.GetDirectoryName(Path.GetDirectoryName(dialog.SelectedPath)) + "/localised-strings.json";
+                Program.LocalisedStringsFilePath = Path.GetDirectoryName(Path.GetDirectoryName(dialog.SelectedPath)) + "/Configuration/Localisation/LocalisedStrings.json";
                 Program.UpdateFormDefTempFiles();
 
                 this.Text = "Form Builder operating on " + Program.FormDefinitionDirectory;
@@ -83,7 +83,6 @@ namespace Auxilium2FormBuilder.Forms
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            new FormDefinitionBuilder(index: 0).ShowDialog();
         }
 
         private void toolStrip_main__dropDownButton_file__toolStripMenuItem_newFormDefinition_Click(object sender, EventArgs e)
