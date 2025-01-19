@@ -224,7 +224,7 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "FormPageBuilder";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "FormPageBuilder";
             Load += FormPageBuilder_Load;
             groupBox1.ResumeLayout(false);

@@ -31,6 +31,7 @@
             button_modify = new Button();
             groupBox_strongLabel = new GroupBox();
             textBox_strongLabel = new TextBox();
+            button_strongLabel = new Button();
             groupBox_secondaryLabel = new GroupBox();
             textBox_secondaryLabel = new TextBox();
             groupBox_value = new GroupBox();
@@ -54,6 +55,7 @@
             // groupBox_strongLabel
             // 
             groupBox_strongLabel.Controls.Add(textBox_strongLabel);
+            groupBox_strongLabel.Controls.Add(button_strongLabel);
             groupBox_strongLabel.Dock = DockStyle.Top;
             groupBox_strongLabel.Location = new Point(0, 0);
             groupBox_strongLabel.Name = "groupBox_strongLabel";
@@ -67,9 +69,21 @@
             textBox_strongLabel.Dock = DockStyle.Fill;
             textBox_strongLabel.Location = new Point(3, 23);
             textBox_strongLabel.Name = "textBox_strongLabel";
-            textBox_strongLabel.Size = new Size(317, 27);
+            textBox_strongLabel.ReadOnly = true;
+            textBox_strongLabel.Size = new Size(291, 27);
             textBox_strongLabel.TabIndex = 1;
             textBox_strongLabel.TextChanged += textBox_strongLabel_TextChanged;
+            // 
+            // button_strongLabel
+            // 
+            button_strongLabel.Dock = DockStyle.Right;
+            button_strongLabel.Location = new Point(294, 23);
+            button_strongLabel.Name = "button_strongLabel";
+            button_strongLabel.Size = new Size(26, 26);
+            button_strongLabel.TabIndex = 2;
+            button_strongLabel.Text = "S";
+            button_strongLabel.UseVisualStyleBackColor = true;
+            button_strongLabel.Click += button_strongLabel_Click;
             // 
             // groupBox_secondaryLabel
             // 
@@ -122,7 +136,7 @@
             Controls.Add(button_modify);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "FormPageChoiceFieldComponentBuilder";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "FormPageChoiceFieldComponentBuilder";
             Load += FormPageChoiceFieldComponentBuilder_Load;
             groupBox_strongLabel.ResumeLayout(false);
@@ -143,5 +157,6 @@
         private TextBox textBox_secondaryLabel;
         private GroupBox groupBox_value;
         private TextBox textBox_value;
+        private Button button_strongLabel;
     }
 }

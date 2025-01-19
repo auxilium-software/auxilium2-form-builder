@@ -361,7 +361,7 @@
             Controls.Add(groupBox4);
             Controls.Add(groupBox2);
             Name = "FormDefinitionBuilder";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "FormDefinitionBuilder";
             Load += FormDefinitionBuilder_Load;
             groupBox1.ResumeLayout(false);

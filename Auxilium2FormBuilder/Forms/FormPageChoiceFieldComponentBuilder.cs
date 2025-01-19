@@ -66,5 +66,12 @@ namespace Auxilium2FormBuilder.Forms
         {
             this.Close();
         }
+
+        private void button_strongLabel_Click(object sender, EventArgs e)
+        {
+            LocalisedStringSelector temp = new();
+            temp.ShowDialog();
+            this.textBox_strongLabel.Text = "::auxpckstr:" + temp.SelectedString;
+        }
     }
 }

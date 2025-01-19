@@ -37,6 +37,8 @@
             toolStripButton_choiceFieldOptions_editSelectedOption = new ToolStripButton();
             toolStripButton_choiceFieldOptions_deleteSelectedOption = new ToolStripButton();
             groupBox1 = new GroupBox();
+            groupBox_required = new GroupBox();
+            checkBox_required = new CheckBox();
             groupBox_outputVariable = new GroupBox();
             textBox_outputVariable = new TextBox();
             groupBox_defaultValue = new GroupBox();
@@ -45,17 +47,15 @@
             textBox_label = new TextBox();
             groupBox_type = new GroupBox();
             comboBox_type = new ComboBox();
-            groupBox_required = new GroupBox();
-            checkBox_required = new CheckBox();
             groupBox2.SuspendLayout();
             groupBox_choiceFieldOptions.SuspendLayout();
             toolStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
+            groupBox_required.SuspendLayout();
             groupBox_outputVariable.SuspendLayout();
             groupBox_defaultValue.SuspendLayout();
             groupBox_label.SuspendLayout();
             groupBox_type.SuspendLayout();
-            groupBox_required.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox2
@@ -154,6 +154,28 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "About this Component";
             // 
+            // groupBox_required
+            // 
+            groupBox_required.Controls.Add(checkBox_required);
+            groupBox_required.Dock = DockStyle.Top;
+            groupBox_required.Location = new Point(3, 231);
+            groupBox_required.Name = "groupBox_required";
+            groupBox_required.Size = new Size(394, 52);
+            groupBox_required.TabIndex = 5;
+            groupBox_required.TabStop = false;
+            groupBox_required.Text = "Required";
+            // 
+            // checkBox_required
+            // 
+            checkBox_required.AutoSize = true;
+            checkBox_required.Dock = DockStyle.Fill;
+            checkBox_required.Location = new Point(3, 23);
+            checkBox_required.Name = "checkBox_required";
+            checkBox_required.Size = new Size(388, 26);
+            checkBox_required.TabIndex = 0;
+            checkBox_required.UseVisualStyleBackColor = true;
+            checkBox_required.CheckedChanged += checkBox_required_CheckedChanged;
+            // 
             // groupBox_outputVariable
             // 
             groupBox_outputVariable.Controls.Add(textBox_outputVariable);
@@ -236,28 +258,6 @@
             comboBox_type.Size = new Size(388, 28);
             comboBox_type.TabIndex = 0;
             // 
-            // groupBox_required
-            // 
-            groupBox_required.Controls.Add(checkBox_required);
-            groupBox_required.Dock = DockStyle.Top;
-            groupBox_required.Location = new Point(3, 231);
-            groupBox_required.Name = "groupBox_required";
-            groupBox_required.Size = new Size(394, 52);
-            groupBox_required.TabIndex = 5;
-            groupBox_required.TabStop = false;
-            groupBox_required.Text = "Required";
-            // 
-            // checkBox_required
-            // 
-            checkBox_required.AutoSize = true;
-            checkBox_required.Dock = DockStyle.Fill;
-            checkBox_required.Location = new Point(3, 23);
-            checkBox_required.Name = "checkBox_required";
-            checkBox_required.Size = new Size(388, 26);
-            checkBox_required.TabIndex = 0;
-            checkBox_required.UseVisualStyleBackColor = true;
-            checkBox_required.CheckedChanged += checkBox_required_CheckedChanged;
-            // 
             // FormPageComponentBuilder
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -267,7 +267,7 @@
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "FormPageComponentBuilder";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "FormPageComponentBuilder";
             Load += FormPageComponentBuilder_Load;
             groupBox2.ResumeLayout(false);
@@ -276,6 +276,8 @@
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             groupBox1.ResumeLayout(false);
+            groupBox_required.ResumeLayout(false);
+            groupBox_required.PerformLayout();
             groupBox_outputVariable.ResumeLayout(false);
             groupBox_outputVariable.PerformLayout();
             groupBox_defaultValue.ResumeLayout(false);
@@ -283,8 +285,6 @@
             groupBox_label.ResumeLayout(false);
             groupBox_label.PerformLayout();
             groupBox_type.ResumeLayout(false);
-            groupBox_required.ResumeLayout(false);
-            groupBox_required.PerformLayout();
             ResumeLayout(false);
         }
 

@@ -52,6 +52,7 @@
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
             listView1.DoubleClick += listView1_DoubleClick;
             // 
             // toolStrip_main
@@ -109,7 +110,7 @@
             // toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory
             // 
             toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory.Name = "toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory";
-            toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory.Size = new Size(224, 26);
+            toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory.Size = new Size(216, 26);
             toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory.Text = "Set Form Directory";
             toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory.Click += toolStrip_main__dropDownButton_file__toolStripMenuItem_setFormDirectory_Click;
             // 

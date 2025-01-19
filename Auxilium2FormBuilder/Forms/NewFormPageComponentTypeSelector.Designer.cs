@@ -105,7 +105,7 @@
             Controls.Add(button_create);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "NewFormPageComponentTypeSelector";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Component Selector";
             Load += NewFormPageComponentTypeSelector_Load;
             groupBox1.ResumeLayout(false);

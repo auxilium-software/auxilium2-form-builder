@@ -9,7 +9,11 @@ namespace Auxilium2FormBuilder
         public static string SchemaURL = "https://schemas.darksparrow.uk/AuxiliumFormDefinition.json?version=4";
 
         public static string FormDefinitionDirectory;
-        public static List<FormDefinition> FormDefinitions = new();
+        public static string LocalisedStringsFilePath;
+
+        public static List<FormDefinition> FormDefinitions = [];
+        public static JsonNode LocalisedStrings;
+        public static List<string> AvailableLanguages = [];
 
         public static void UpdateFormDefFiles()
         {
@@ -31,6 +35,8 @@ namespace Auxilium2FormBuilder
         public static void UpdateFromFiles()
         {
             Program.FormDefinitions.Clear();
+
+
             string[] files = Directory.GetFiles(path: Program.FormDefinitionDirectory, searchPattern: "*.json", searchOption: SearchOption.AllDirectories);
             foreach (string file in files)
             {
@@ -44,7 +50,48 @@ namespace Auxilium2FormBuilder
                 Program.FormDefinitions.Add(formDefinition);
             }
             Program.UpdateFormDefTempFiles();
+
+
+            string fileContents2 = File.ReadAllText(Program.LocalisedStringsFilePath);
+            Program.LocalisedStrings = JsonObject.Parse(fileContents2);
+            var languages = new HashSet<string>();
+            ExtractLanguages(Program.LocalisedStrings, languages);
+            Program.AvailableLanguages = languages.ToList().Distinct().ToList();
         }
+        public static void ExtractLanguages(JsonNode node, HashSet<string> languages)
+        {
+            if (node is JsonObject obj)
+            {
+                foreach (var property in obj)
+                {
+                    // If the value is another JsonObject or JsonArray, recurse
+                    if (property.Value is JsonObject || property.Value is JsonArray)
+                    {
+                        ExtractLanguages(property.Value, languages);
+                    }
+
+                    // If the property name is a language code (like "en" or "cy"), add to the set
+                    else if (property.Key.Length == 2)
+                    {
+                        languages.Add(property.Key);
+                    }
+                }
+            }
+            else if (node is JsonArray array)
+            {
+                foreach (var item in array)
+                {
+                    ExtractLanguages(item, languages);
+                }
+            }
+        }
+
+
+
+
+
+
+
 
 
 
