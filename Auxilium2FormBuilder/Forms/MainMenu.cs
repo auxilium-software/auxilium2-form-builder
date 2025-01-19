@@ -106,5 +106,10 @@ namespace Auxilium2FormBuilder.Forms
         {
             Program.UpdateFormDefFiles();
         }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
