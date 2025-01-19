@@ -130,5 +130,12 @@ namespace Auxilium2FormBuilder.Forms
             Program.FormDefinitions[this.FormDefIndex].Pages[this.FormPageDefIndex].If = textBox_ifStatement.Text;
             this.overwriteFieldsWithFileData();
         }
+
+        private void button_title_Click(object sender, EventArgs e)
+        {
+            LocalisedStringSelector temp = new();
+            temp.ShowDialog();
+            if(temp.HasSelectedString) this.textBox_title.Text = "::auxpckstr:" + temp.SelectedString + "::";
+        }
     }
 }

@@ -36,6 +36,8 @@
             textBox_secondaryLabel = new TextBox();
             groupBox_value = new GroupBox();
             textBox_value = new TextBox();
+            button_secondaryLabel = new Button();
+            button_value = new Button();
             groupBox_strongLabel.SuspendLayout();
             groupBox_secondaryLabel.SuspendLayout();
             groupBox_value.SuspendLayout();
@@ -70,24 +72,25 @@
             textBox_strongLabel.Location = new Point(3, 23);
             textBox_strongLabel.Name = "textBox_strongLabel";
             textBox_strongLabel.ReadOnly = true;
-            textBox_strongLabel.Size = new Size(291, 27);
+            textBox_strongLabel.Size = new Size(257, 27);
             textBox_strongLabel.TabIndex = 1;
             textBox_strongLabel.TextChanged += textBox_strongLabel_TextChanged;
             // 
             // button_strongLabel
             // 
             button_strongLabel.Dock = DockStyle.Right;
-            button_strongLabel.Location = new Point(294, 23);
+            button_strongLabel.Location = new Point(260, 23);
             button_strongLabel.Name = "button_strongLabel";
-            button_strongLabel.Size = new Size(26, 26);
+            button_strongLabel.Size = new Size(60, 26);
             button_strongLabel.TabIndex = 2;
-            button_strongLabel.Text = "S";
+            button_strongLabel.Text = "select";
             button_strongLabel.UseVisualStyleBackColor = true;
             button_strongLabel.Click += button_strongLabel_Click;
             // 
             // groupBox_secondaryLabel
             // 
             groupBox_secondaryLabel.Controls.Add(textBox_secondaryLabel);
+            groupBox_secondaryLabel.Controls.Add(button_secondaryLabel);
             groupBox_secondaryLabel.Dock = DockStyle.Top;
             groupBox_secondaryLabel.Location = new Point(0, 52);
             groupBox_secondaryLabel.Name = "groupBox_secondaryLabel";
@@ -101,13 +104,15 @@
             textBox_secondaryLabel.Dock = DockStyle.Fill;
             textBox_secondaryLabel.Location = new Point(3, 23);
             textBox_secondaryLabel.Name = "textBox_secondaryLabel";
-            textBox_secondaryLabel.Size = new Size(317, 27);
+            textBox_secondaryLabel.ReadOnly = true;
+            textBox_secondaryLabel.Size = new Size(257, 27);
             textBox_secondaryLabel.TabIndex = 1;
             textBox_secondaryLabel.TextChanged += textBox_secondaryLabel_TextChanged;
             // 
             // groupBox_value
             // 
             groupBox_value.Controls.Add(textBox_value);
+            groupBox_value.Controls.Add(button_value);
             groupBox_value.Dock = DockStyle.Top;
             groupBox_value.Location = new Point(0, 104);
             groupBox_value.Name = "groupBox_value";
@@ -121,9 +126,32 @@
             textBox_value.Dock = DockStyle.Fill;
             textBox_value.Location = new Point(3, 23);
             textBox_value.Name = "textBox_value";
-            textBox_value.Size = new Size(317, 27);
+            textBox_value.ReadOnly = true;
+            textBox_value.Size = new Size(257, 27);
             textBox_value.TabIndex = 1;
             textBox_value.TextChanged += textBox_value_TextChanged;
+            // 
+            // button_secondaryLabel
+            // 
+            button_secondaryLabel.Dock = DockStyle.Right;
+            button_secondaryLabel.Location = new Point(260, 23);
+            button_secondaryLabel.Name = "button_secondaryLabel";
+            button_secondaryLabel.Size = new Size(60, 26);
+            button_secondaryLabel.TabIndex = 3;
+            button_secondaryLabel.Text = "select";
+            button_secondaryLabel.UseVisualStyleBackColor = true;
+            button_secondaryLabel.Click += button_secondaryLabel_Click;
+            // 
+            // button_value
+            // 
+            button_value.Dock = DockStyle.Right;
+            button_value.Location = new Point(260, 23);
+            button_value.Name = "button_value";
+            button_value.Size = new Size(60, 26);
+            button_value.TabIndex = 3;
+            button_value.Text = "select";
+            button_value.UseVisualStyleBackColor = true;
+            button_value.Click += button_value_Click;
             // 
             // FormPageChoiceFieldComponentBuilder
             // 
@@ -158,5 +186,7 @@
         private GroupBox groupBox_value;
         private TextBox textBox_value;
         private Button button_strongLabel;
+        private Button button_secondaryLabel;
+        private Button button_value;
     }
 }

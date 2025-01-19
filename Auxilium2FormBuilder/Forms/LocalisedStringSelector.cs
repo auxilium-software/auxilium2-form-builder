@@ -14,7 +14,8 @@ namespace Auxilium2FormBuilder.Forms
     public partial class LocalisedStringSelector : Form
     {
 
-        public string SelectedString { get; internal set; }
+        public bool HasSelectedString { get; private set; } = false;
+        public string SelectedString { get; private set; }
 
         public LocalisedStringSelector()
         {
@@ -29,22 +30,18 @@ namespace Auxilium2FormBuilder.Forms
 
                 if (kvp.Value is JsonObject nestedObject)
                 {
-                    // Recursively handle deeper nested objects
                     PopulateListView(listView, currentPath, nestedObject);
                 }
                 else if (kvp.Value is JsonObject || kvp.Value is JsonArray)
                 {
-                    // Skip non-leaf nodes
                     continue;
                 }
                 else if (kvp.Value is JsonValue value)
                 {
-                    // Look for existing item with the same path
                     var existingItem = listView.Items.Cast<ListViewItem>().FirstOrDefault(item => item.Tag?.ToString() == basePath);
 
                     if (existingItem == null)
                     {
-                        // Create a new item if it doesn't exist
                         ListViewItem listViewItem = new()
                         {
                             Text = basePath,
@@ -59,7 +56,6 @@ namespace Auxilium2FormBuilder.Forms
                     }
                     else
                     {
-                        // Update existing item
                         existingItem.Text = basePath;
                         if (kvp.Key == "en")
                             existingItem.SubItems[1].Text = value.ToString();
@@ -113,6 +109,7 @@ namespace Auxilium2FormBuilder.Forms
             if (sender is ListView listView && listView.SelectedItems.Count == 1)
             {
                 var temp = listView.SelectedItems[0].Tag;
+                this.HasSelectedString = true;
                 this.SelectedString = temp.ToString();
                 this.Close();
             }

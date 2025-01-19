@@ -71,7 +71,21 @@ namespace Auxilium2FormBuilder.Forms
         {
             LocalisedStringSelector temp = new();
             temp.ShowDialog();
-            this.textBox_strongLabel.Text = "::auxpckstr:" + temp.SelectedString;
+            if (temp.HasSelectedString) this.textBox_strongLabel.Text = "::auxpckstr:" + temp.SelectedString + "::";
+        }
+
+        private void button_secondaryLabel_Click(object sender, EventArgs e)
+        {
+            LocalisedStringSelector temp = new();
+            temp.ShowDialog();
+            if (temp.HasSelectedString) this.textBox_strongLabel.Text = "::auxpckstr:" + temp.SelectedString + "::";
+        }
+
+        private void button_value_Click(object sender, EventArgs e)
+        {
+            LocalisedStringSelector temp = new();
+            temp.ShowDialog();
+            if (temp.HasSelectedString) this.textBox_secondaryLabel.Text = "::auxpckstr:" + temp.SelectedString + "::";
         }
     }
 }

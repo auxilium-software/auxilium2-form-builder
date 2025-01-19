@@ -146,5 +146,13 @@ namespace Auxilium2FormBuilder.Forms
                 this.overwriteFieldsWithFileData();
             }
         }
+
+        private void button_label_Click(object sender, EventArgs e)
+        {
+
+            LocalisedStringSelector temp = new();
+            temp.ShowDialog();
+            if (temp.HasSelectedString) this.textBox_label.Text = "::auxpckstr:" + temp.SelectedString + "::";
+        }
     }
 }

@@ -47,6 +47,7 @@
             textBox_label = new TextBox();
             groupBox_type = new GroupBox();
             comboBox_type = new ComboBox();
+            button_label = new Button();
             groupBox2.SuspendLayout();
             groupBox_choiceFieldOptions.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -219,6 +220,7 @@
             // groupBox_label
             // 
             groupBox_label.Controls.Add(textBox_label);
+            groupBox_label.Controls.Add(button_label);
             groupBox_label.Dock = DockStyle.Top;
             groupBox_label.Location = new Point(3, 75);
             groupBox_label.Name = "groupBox_label";
@@ -232,7 +234,8 @@
             textBox_label.Dock = DockStyle.Fill;
             textBox_label.Location = new Point(3, 23);
             textBox_label.Name = "textBox_label";
-            textBox_label.Size = new Size(388, 27);
+            textBox_label.ReadOnly = true;
+            textBox_label.Size = new Size(328, 27);
             textBox_label.TabIndex = 1;
             textBox_label.TextChanged += textBox_label_TextChanged;
             // 
@@ -257,6 +260,17 @@
             comboBox_type.Name = "comboBox_type";
             comboBox_type.Size = new Size(388, 28);
             comboBox_type.TabIndex = 0;
+            // 
+            // button_label
+            // 
+            button_label.Dock = DockStyle.Right;
+            button_label.Location = new Point(331, 23);
+            button_label.Name = "button_label";
+            button_label.Size = new Size(60, 26);
+            button_label.TabIndex = 4;
+            button_label.Text = "select";
+            button_label.UseVisualStyleBackColor = true;
+            button_label.Click += button_label_Click;
             // 
             // FormPageComponentBuilder
             // 
@@ -308,5 +322,6 @@
         private ToolStripButton toolStripButton_choiceFieldOptions_deleteSelectedOption;
         private GroupBox groupBox_required;
         private CheckBox checkBox_required;
+        private Button button_label;
     }
 }

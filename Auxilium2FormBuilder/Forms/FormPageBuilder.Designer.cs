@@ -36,6 +36,7 @@
             textBox_description = new TextBox();
             groupBox_pageTitle = new GroupBox();
             textBox_title = new TextBox();
+            button_title = new Button();
             groupBox_pageID = new GroupBox();
             textBox_pageID = new TextBox();
             groupBox2 = new GroupBox();
@@ -110,6 +111,7 @@
             // groupBox_pageTitle
             // 
             groupBox_pageTitle.Controls.Add(textBox_title);
+            groupBox_pageTitle.Controls.Add(button_title);
             groupBox_pageTitle.Dock = DockStyle.Top;
             groupBox_pageTitle.Location = new Point(3, 75);
             groupBox_pageTitle.Name = "groupBox_pageTitle";
@@ -123,9 +125,21 @@
             textBox_title.Dock = DockStyle.Fill;
             textBox_title.Location = new Point(3, 23);
             textBox_title.Name = "textBox_title";
-            textBox_title.Size = new Size(388, 27);
+            textBox_title.ReadOnly = true;
+            textBox_title.Size = new Size(328, 27);
             textBox_title.TabIndex = 1;
             textBox_title.TextChanged += textBox_title_TextChanged;
+            // 
+            // button_title
+            // 
+            button_title.Dock = DockStyle.Right;
+            button_title.Location = new Point(331, 23);
+            button_title.Name = "button_title";
+            button_title.Size = new Size(60, 26);
+            button_title.TabIndex = 3;
+            button_title.Text = "select";
+            button_title.UseVisualStyleBackColor = true;
+            button_title.Click += button_title_Click;
             // 
             // groupBox_pageID
             // 
@@ -260,5 +274,6 @@
         private ToolStripButton toolStripButton_pageComponents_newComponent;
         private ToolStripButton toolStripButton_pageComponents_editSelectedComponent;
         private ToolStripButton toolStripButton_pageComponents_deleteSelectedComponent;
+        private Button button_title;
     }
 }
