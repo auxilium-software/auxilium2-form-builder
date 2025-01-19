@@ -24,8 +24,8 @@ namespace Auxilium2FormBuilder.Forms
             this.FormDefIndex = formDefIndex;
             this.FormPageDefIndex = formPageDefIndex;
             this.FormPageComponentDefIndex = formPageComponentDefIndex;
-            this.overwriteFieldsWithFileData();
             FormPageComponentOptionDefIndex = formPageComponentOptionDefIndex;
+            this.overwriteFieldsWithFileData();
         }
 
         public void overwriteFieldsWithFileData()
